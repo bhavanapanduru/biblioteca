@@ -9,7 +9,7 @@ public class OutputDriver {
         System.out.println(printingMessage);
     }
 
-    public void printWithAFormat(String toBePrinted) {
+    public void printTextWithColumnWise(String toBePrinted) {
 
         List<String> textsToBePrinted = Arrays.asList(toBePrinted.split(","));
 
