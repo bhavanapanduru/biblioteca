@@ -1,3 +1,4 @@
+import Biblioteca.Book;
 import Biblioteca.BookHelper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
