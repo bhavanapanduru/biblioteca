@@ -5,6 +5,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 public class LibraryTest {
 
@@ -22,8 +23,10 @@ public class LibraryTest {
     void testShouldReturnAllBookTitles() {
 
         String expected = "Harry Potter,a,1990";
+        String notExpected = "Harry Potter,a,1";
 
         assertEquals(expected, library.getBookDetails().get(0));
+        assertNotEquals(notExpected, library.getBookDetails().get(0));
 
     }
 

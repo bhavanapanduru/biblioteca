@@ -34,20 +34,7 @@ class LibraryManagementSystemTest {
         verify(outputDriver).print("Welcome to the Bangalore Library");
     }
 
-
-    /*@Disabled
-    @DisplayName("Should print all details of the book")
-    @Test
-    void testShouldPrintAllDetailsOfBook() {
-        libraryManagementSystem.printBookDetails();
-
-        verify(outputDriver).print("Lists of Books in the Library");
-        verify(outputDriver).printTextWithColumnWise("Title,Author,Published Year");
-
-        verify(outputDriver).printTextWithColumnWise("Harry Potter,a,1990");
-        verify(outputDriver).printTextWithColumnWise("The Half GirlFriend,b,1991");
-    }*/
-
+    
     @DisplayName("Should Display the Menu and Do operations selected by the user")
     @Test
     void testShouldDisplayTheMenuAndDoOperation() {

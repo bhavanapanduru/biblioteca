@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 class BookTest {
 
@@ -18,6 +19,7 @@ class BookTest {
     @Test
     void testShouldReturnBookTitle() {
         assertEquals("Harry Potter,a,1990", book.toString());
+        assertNotEquals("Harry,a,1990", book.toString());
     }
 
 

@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 public class BookHelperTest {
 
@@ -21,6 +22,10 @@ public class BookHelperTest {
         books = new ArrayList<>();
         books.add(new Book("Harry Potter", "a", 1990));
         books.add(new Book("The Half GirlFriend", "b", 1991));
+
+
+        books.add(new Book("Harry", "a", 1990));
+        books.add(new Book("Half GirlFriend", "b", 1991));
     }
 
     @DisplayName("Should return Books")
@@ -29,6 +34,11 @@ public class BookHelperTest {
 
         assertEquals(books.get(0).toString() , bookHelper.getBooks().get(0).toString());
         assertEquals(books.get(1).toString() , bookHelper.getBooks().get(1).toString());
+
+        assertNotEquals(books.get(2).toString() , bookHelper.getBooks().get(0).toString());
+        assertNotEquals(books.get(3).toString() , bookHelper.getBooks().get(1).toString());
+
+
 
     }
 
