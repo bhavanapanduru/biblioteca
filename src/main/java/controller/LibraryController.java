@@ -1,6 +1,5 @@
 package controller;
 
-import Biblioteca.LibraryHelper;
 import Biblioteca.Library;
 import view.OutputDriver;
 
@@ -8,24 +7,25 @@ import java.util.List;
 
 public class LibraryController {
 
-    private OutputDriver outputDriver;
+    private final OutputDriver outputDriver;
+    private final Library library;
 
-    public LibraryController(OutputDriver outputDriver) {
+    public LibraryController(final OutputDriver outputDriver, final Library library) {
         this.outputDriver = outputDriver;
+        this.library = library;
     }
 
     public void printWelcomeMessage() {
-        outputDriver.print("Welcome Message");
+        outputDriver.print("Welcome to the Bangalore Library");
     }
 
-    public void printBookTitles() {
+    public void printBookDetails() {
 
-        List<String> bookTitlesList;
+        List<String> bookList = library.getBookDetails();
 
-        Library library = new LibraryHelper().createLibrary();
-        bookTitlesList = library.getBookTitles();
-
-        bookTitlesList.forEach(bookTitle -> outputDriver.print(bookTitle));
+        outputDriver.print("Lists of Books in the Library");
+        outputDriver.printWithAFormat("Title,Author,Published Year");
+        bookList.forEach(outputDriver::printWithAFormat);
 
     }
 

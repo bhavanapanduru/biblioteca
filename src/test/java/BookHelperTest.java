@@ -19,14 +19,13 @@ public class BookHelperTest {
         bookHelper = new BookHelper();
 
         books = new ArrayList<>();
-        books.add(new Book("Harry Potter"));
-        books.add(new Book("The Half GirlFriend"));
+        books.add(new Book("Harry Potter", "a", 1990));
+        books.add(new Book("The Half GirlFriend", "b", 1991));
     }
 
     @DisplayName("Should return Books")
     @Test
     void testShouldReturnBooks() {
-
 
         assertEquals(books.get(0).toString() , bookHelper.getBooks().get(0).toString());
         assertEquals(books.get(1).toString() , bookHelper.getBooks().get(1).toString());

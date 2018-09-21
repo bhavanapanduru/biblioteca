@@ -1,15 +1,24 @@
 import Biblioteca.Book;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.verify;
 
-public class BookTest {
+class BookTest {
 
-    @DisplayName("Should expects String 'Harry Potter'")
-    @Test
-    void testShouldReturnHarryPotter() {
-        assertEquals("Harry Potter", new Book("Harry Potter").toString());
+    private Book book;
+
+    @BeforeEach
+    void init() {
+        book = new Book("Harry Potter", "a", 1990);
     }
+
+    @DisplayName("Should expects title of the book")
+    @Test
+    void testShouldReturnBookTitle() {
+        assertEquals("Harry Potter,a,1990", book.toString());
+    }
+
+
 }

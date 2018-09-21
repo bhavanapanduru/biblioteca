@@ -1,39 +1,41 @@
-import Biblioteca.BibliotecaApplication;
+import Biblioteca.Library;
+import Biblioteca.LibraryHelper;
+import controller.LibraryController;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import view.OutputDriver;
-import controller.LibraryController;
 
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
-public class LibraryControllerTest {
+class LibraryControllerTest {
 
-    OutputDriver outputDriver;
-    BibliotecaApplication BibliotecaApp;
-    LibraryController libraryController;
+    private OutputDriver outputDriver;
+    private LibraryController libraryController;
 
     @BeforeEach
     void init() {
 
         outputDriver = mock(OutputDriver.class);
-        libraryController = new LibraryController(outputDriver);
-        BibliotecaApp = new BibliotecaApplication(libraryController);
+        Library library = new LibraryHelper().createLibrary();
+        libraryController = new LibraryController(outputDriver, library);
 
     }
 
     @DisplayName("Should print the welcome message")
     @Test
-    void testShouldPrintTheWelcomeMessage() {
-        verify(outputDriver).print("Welcome Message");
+    void testShouldPrintWelcomeMessage() {
+        libraryController.printWelcomeMessage();
+        verify(outputDriver).print("Welcome to the Bangalore Library");
     }
 
-    @DisplayName("Should print all titles of the book")
+    @DisplayName("Should print all details of the book")
     @Test
-    void testShouldPrintAllTitlesOfBook() {
-        verify(outputDriver).print("Harry Potter");
-        verify(outputDriver).print("The Half GirlFriend");
+    void testShouldPrintAllDetailsOfBook() {
+        libraryController.printBookDetails();
+        verify(outputDriver).printWithAFormat("Harry Potter,a,1990");
+        verify(outputDriver).printWithAFormat("The Half GirlFriend,b,1991");
     }
 
 }

@@ -11,8 +11,8 @@ public class BookHelper {
 
         books = new ArrayList<>();
 
-        books.add(new Book("Harry Potter"));
-        books.add(new Book("The Half GirlFriend"));
+        books.add(new Book("Harry Potter", "a", 1990));
+        books.add(new Book("The Half GirlFriend", "b", 1991));
 
     }
 
