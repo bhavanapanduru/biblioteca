@@ -1,5 +1,6 @@
 import Biblioteca.Library;
 import Biblioteca.LibraryHelper;
+import Biblioteca.Message;
 import controller.Menu;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -32,7 +33,7 @@ public class MenuTest {
     void testShouldPrintAllDetailsOfBook() {
         Menu.values()[0].act(outputDriver, inputDriver, library);
 
-        verify(outputDriver).print("Lists of Books in the Library");
+        verify(outputDriver).print(Message.LIST_BOOKS_HEAD_LINE);
         verify(outputDriver).printTextWithColumnWise("Title,Author,Published Year");
 
         verify(outputDriver).printTextWithColumnWise("Harry Potter,a,1990");

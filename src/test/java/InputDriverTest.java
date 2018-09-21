@@ -17,7 +17,6 @@ public class InputDriverTest {
         InputDriver inputDriver = new InputDriver();
 
         assertEquals(2, inputDriver.getInput());
-
     }
 
     @DisplayName("Testing For User selected 1st Menu Input")
@@ -27,7 +26,6 @@ public class InputDriverTest {
         InputDriver inputDriver = new InputDriver();
 
         assertNotEquals(3, inputDriver.getInput());
-
     }
 
     private void setSystemIn(String string) {

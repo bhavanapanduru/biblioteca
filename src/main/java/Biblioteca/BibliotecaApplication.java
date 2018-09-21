@@ -16,7 +16,7 @@ public class BibliotecaApplication {
 
     }
 
-    public static void start(LibraryManagementSystem libraryManagementSystem) {
+    private static void start(LibraryManagementSystem libraryManagementSystem) {
         libraryManagementSystem.displayWelcomeMessage();
         libraryManagementSystem.displayMenu();
     }

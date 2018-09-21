@@ -23,7 +23,6 @@ public class BookHelperTest {
         books.add(new Book("Harry Potter", "a", 1990));
         books.add(new Book("The Half GirlFriend", "b", 1991));
 
-
         books.add(new Book("Harry", "a", 1990));
         books.add(new Book("Half GirlFriend", "b", 1991));
     }
@@ -37,8 +36,6 @@ public class BookHelperTest {
 
         assertNotEquals(books.get(2).toString() , bookHelper.getBooks().get(0).toString());
         assertNotEquals(books.get(3).toString() , bookHelper.getBooks().get(1).toString());
-
-
 
     }
 

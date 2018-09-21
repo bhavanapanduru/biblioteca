@@ -13,9 +13,7 @@ public class LibraryTest {
 
     @BeforeEach
     void init() {
-
         library = new LibraryHelper().createLibrary();
-
     }
 
     @DisplayName("Should return titles of all the books")
