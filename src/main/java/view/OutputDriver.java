@@ -13,10 +13,9 @@ public class OutputDriver {
 
         List<String> textsToBePrinted = Arrays.asList(toBePrinted.split(","));
 
-        int textIndexToBePrinted = 0;
         int lastTextIndexToBePrinted = textsToBePrinted.size() - 1;
 
-        for (; textIndexToBePrinted < textsToBePrinted.size(); textIndexToBePrinted++) {
+        for (int textIndexToBePrinted = 0; textIndexToBePrinted < textsToBePrinted.size(); textIndexToBePrinted++) {
             System.out.printf("%-30s ", textsToBePrinted.get(textIndexToBePrinted));
 
             if (textIndexToBePrinted == lastTextIndexToBePrinted) {

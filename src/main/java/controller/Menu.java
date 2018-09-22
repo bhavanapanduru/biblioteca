@@ -5,13 +5,14 @@ import Biblioteca.Message;
 import view.InputDriver;
 import view.OutputDriver;
 
+import java.util.HashMap;
 import java.util.List;
 
 public enum Menu {
 
-    List_Books() {
+    LIST_BOOKS() {
         @Override
-        public void act(OutputDriver outputDriver, InputDriver inputDriver, Library library){
+        public void act(OutputDriver outputDriver, InputDriver inputDriver, Library library) {
 
             List<String> bookList = library.getBookDetails();
 

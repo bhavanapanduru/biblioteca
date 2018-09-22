@@ -6,6 +6,7 @@ import view.InputDriver;
 import view.OutputDriver;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class LibraryManagementSystem {
@@ -13,15 +14,13 @@ public class LibraryManagementSystem {
     private final OutputDriver outputDriver;
     private final InputDriver inputDriver;
     private final Library library;
-    private final List<Integer> optionsOfMenu;
+    private List<String> menuList;
+    private HashMap<Integer, String> userChoicesToMenu;
 
     public LibraryManagementSystem(final OutputDriver outputDriver, final InputDriver inputDriver, final Library library) {
         this.outputDriver = outputDriver;
         this.inputDriver = inputDriver;
         this.library = library;
-
-        optionsOfMenu = new ArrayList<>();
-        optionsOfMenu.add(1);
     }
 
     public void displayWelcomeMessage() {
@@ -29,38 +28,49 @@ public class LibraryManagementSystem {
     }
 
     public void displayMenu() {
-        printMenu();
         doMenuOperation();
-    }
-
-    private void printMenu() {
-        List<String> menuList = new ArrayList<>();
-        menuList.add("1) List Books");
-
-        outputDriver.print(Message.MENU_HEAD_LINE);
-        menuList.forEach(outputDriver::print);
-        outputDriver.print(Message.USER_OPINION);
     }
 
     private void doMenuOperation() {
 
-        int userChoice;
-        int menuIndex;
+        printMenu();
+        initializeUserChoicesToMenu();
 
-        userChoice = inputDriver.getInput();
+        int userChoice = inputDriver.getInput();
+        int quitIndex = 2;
 
-        if (optionsOfMenu.contains(userChoice)) {
-            menuIndex = userChoice - 1;
-            Menu.values()[menuIndex].act(outputDriver, inputDriver, library);
-        } else {
-            outputDriver.print(Message.INVALID_OPTION);
-        }
-
-        /*do {
-
+        while (userChoice != quitIndex) {
+            switch (userChoice) {
+                case 1:
+                    Menu.valueOf(userChoicesToMenu.get(userChoice)).act(outputDriver, inputDriver, library);
+                    break;
+                case 2 :
+                    break;
+                default:
+                    outputDriver.print(Message.INVALID_OPTION);
+            }
             printMenu();
-        } while (true);*/
+            userChoice = inputDriver.getInput();
+        }
 
     }
 
+    private void printMenu() {
+        outputDriver.print(Message.MENU_HEAD_LINE);
+        menuList.forEach(outputDriver::print);
+        outputDriver.print(Message.USER_CHOICE);
+    }
+
+    private void initializeUserChoicesToMenu() {
+        userChoicesToMenu = new HashMap<>();
+        userChoicesToMenu.put(1, "LIST_BOOKS");
+    }
+
+    public LibraryManagementSystem initializeMenu() {
+        menuList = new ArrayList<>();
+        menuList.add("1) List Books");
+        menuList.add("2) Quit");
+
+        return this;
+    }
 }

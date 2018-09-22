@@ -10,7 +10,8 @@ public class BibliotecaApplication {
     public static void main(String[] args) {
 
         Library library = new LibraryHelper().createLibrary();
-        LibraryManagementSystem libraryManagementSystem = new LibraryManagementSystem(new OutputDriver(), new InputDriver(), library);
+        LibraryManagementSystem libraryManagementSystem =
+                new LibraryManagementSystem(new OutputDriver(), new InputDriver(), library).initializeMenu();
 
         start(libraryManagementSystem);
 
