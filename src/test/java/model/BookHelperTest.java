@@ -1,5 +1,7 @@
-import Biblioteca.Book;
-import Biblioteca.BookHelper;
+package model;
+
+import model.Book;
+import model.BookHelper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

@@ -1,5 +1,7 @@
-import Biblioteca.Library;
-import Biblioteca.LibraryHelper;
+package model;
+
+import model.Library;
+import model.LibraryHelper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

@@ -1,24 +1,24 @@
-import Biblioteca.Library;
-import Biblioteca.LibraryHelper;
-import Biblioteca.Message;
+package controller;
+
+import model.Library;
+import model.LibraryHelper;
+import model.Message;
 import controller.Menu;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import view.InputDriver;
 import view.OutputDriver;
 
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.*;
 
 public class MenuTest {
 
     private OutputDriver outputDriver;
     private InputDriver inputDriver;
     private Library library ;
-    private Library libraryMock;
-
 
     @BeforeEach
     void init() {
@@ -27,14 +27,13 @@ public class MenuTest {
         inputDriver = mock(InputDriver.class);
 
         library = new LibraryHelper().createLibrary();
-        libraryMock = mock(Library.class);
-
 
     }
 
     @DisplayName("Should print all details of the book")
     @Test
     void testShouldPrintAllDetailsOfBook() {
+
         Menu.values()[0].act(outputDriver, inputDriver, library);
 
         verify(outputDriver).print(Message.LIST_BOOKS_HEAD_LINE);
@@ -42,17 +41,33 @@ public class MenuTest {
 
         verify(outputDriver).printTextWithColumnWise("Harry Potter,a,1990");
         verify(outputDriver).printTextWithColumnWise("The Half GirlFriend,b,1991");
+
     }
 
-    @DisplayName("Customer can check out the book")
+    @DisplayName("Customer Should checked out the book Successfully")
     @Test
-    void testForCheckOutTheBook() {
-        Menu.values()[1].act(outputDriver, inputDriver, library);
+    void testForCheckOutTheBookSuccessfully() {
 
         when(inputDriver.getInputString()).thenReturn("").thenReturn("Harry Potter");
+        Menu.values()[1].act(outputDriver, inputDriver, library);
 
         verify(outputDriver).print(Message.CHECKOUT_USER_HEADER);
-        //verify(libraryMock).checkOut("Harry Potter");
+        verify(outputDriver).print(Message.SUCCESSFULLY_CHECKEDOUT_BOOK_MESSAGE);
+        assertEquals(1, library.getBookDetails().size());
+
+    }
+
+    @DisplayName("Customer unsuccessfully checked out the book")
+    @Test
+    void testForCheckOutTheBookUnSuccessfully() {
+
+        when(inputDriver.getInputString()).thenReturn("").thenReturn("Harry");
+        Menu.values()[1].act(outputDriver, inputDriver, library);
+
+        verify(outputDriver).print(Message.CHECKOUT_USER_HEADER);
+        verify(outputDriver).print(Message.UNSUCCESSFUL_CHECKEDOUT_BOOK_MESSAGE);
+        assertEquals(2, library.getBookDetails().size());
+
     }
 
 

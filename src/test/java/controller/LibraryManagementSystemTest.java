@@ -1,6 +1,8 @@
-import Biblioteca.Library;
-import Biblioteca.LibraryHelper;
-import Biblioteca.Message;
+package controller;
+
+import model.Library;
+import model.LibraryHelper;
+import model.Message;
 import controller.LibraryManagementSystem;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -16,8 +18,6 @@ class LibraryManagementSystemTest {
     private OutputDriver outputDriver;
     private InputDriver inputDriver;
     private LibraryManagementSystem libraryManagementSystem;
-
-    private Library library;
 
     @BeforeEach
     void init() {

@@ -1,4 +1,4 @@
-package Biblioteca;
+package model;
 
 public class Message {
 
@@ -8,6 +8,8 @@ public class Message {
     public static final String USER_CHOICE = "Select an option : ";
     public static final String LIST_BOOKS_HEAD_LINE = "------------- Lists of Books in the Library -------------";
     public static final String CHECKOUT_USER_HEADER = "Enter the Book Title To CheckOut : ";
+    public static final String SUCCESSFULLY_CHECKEDOUT_BOOK_MESSAGE = "Thank you! Enjoy the book";
+    public static final String UNSUCCESSFUL_CHECKEDOUT_BOOK_MESSAGE = "That book is not available.";
 
 
 

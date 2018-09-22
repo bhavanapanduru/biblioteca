@@ -1,3 +1,5 @@
+package view;
+
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -8,7 +10,7 @@ import java.io.ByteArrayInputStream;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
-public class InputDriverTest {
+class InputDriverTest {
 
     @DisplayName("Testing For User selected 2nd Menu Input")
     @Test
@@ -51,7 +53,7 @@ public class InputDriverTest {
     }
 
     @AfterEach
-    public void setup() {
+    void setup() {
         System.setIn(System.in);
     }
 

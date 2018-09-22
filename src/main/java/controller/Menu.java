@@ -1,7 +1,7 @@
 package controller;
 
-import Biblioteca.Library;
-import Biblioteca.Message;
+import model.Library;
+import model.Message;
 import view.InputDriver;
 import view.OutputDriver;
 
@@ -15,7 +15,6 @@ public enum Menu {
 
             List<String> bookList = library.getBookDetails();
 
-
             outputDriver.print(Message.LIST_BOOKS_HEAD_LINE);
             outputDriver.printTextWithColumnWise("Title,Author,Published Year");
             bookList.forEach(outputDriver::printTextWithColumnWise);
@@ -26,11 +25,18 @@ public enum Menu {
         @Override
         public void act(OutputDriver outputDriver, InputDriver inputDriver, Library library) {
 
-            inputDriver.getInputString();
             outputDriver.print(Message.CHECKOUT_USER_HEADER);
+
+            inputDriver.getInputString();
             String userCheckOutBookTitle = inputDriver.getInputString();
 
-            library.checkOut(userCheckOutBookTitle);
+            if (library.checkOut(userCheckOutBookTitle)) {
+                outputDriver.print(Message.SUCCESSFULLY_CHECKEDOUT_BOOK_MESSAGE);
+            }
+            else {
+                outputDriver.print(Message.UNSUCCESSFUL_CHECKEDOUT_BOOK_MESSAGE);
+            }
+
         }
     };
 

@@ -1,7 +1,7 @@
 package controller;
 
-import Biblioteca.Library;
-import Biblioteca.Message;
+import model.Library;
+import model.Message;
 import view.InputDriver;
 import view.OutputDriver;
 
