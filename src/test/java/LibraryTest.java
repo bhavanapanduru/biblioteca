@@ -4,8 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class LibraryTest {
 
@@ -26,6 +25,36 @@ public class LibraryTest {
         assertEquals(expected, library.getBookDetails().get(0));
         assertNotEquals(notExpected, library.getBookDetails().get(0));
 
+    }
+
+    @DisplayName("Should return true if book is available")
+    @Test
+    void testShouldReturnTrueIfBookIsAvailable() {
+        assertAll(
+                () -> assertEquals(0, library.checkBookIsAvailable("Harry Potter")),
+                () -> assertEquals(1, library.checkBookIsAvailable("The Half GirlFriend"))
+        );
+    }
+
+    @DisplayName("Should return false if book is not available")
+    @Test
+    void testShouldReturnFalseIfBookIsNotAvailable() {
+        assertAll(
+                () -> assertNotEquals(1, library.checkBookIsAvailable("Harry Potter")),
+                () -> assertNotEquals(0, library.checkBookIsAvailable("The Half GirlFriend"))
+        );
+    }
+
+    @DisplayName("Should return true if book is successfully checkedOut")
+    @Test
+    void testShouldReturnTrueWhenWeCheckOutABook() {
+        assertTrue(library.checkOut("Harry Potter"));
+    }
+
+    @DisplayName("Should return false if book is not successfully checkedOut")
+    @Test
+    void testShouldReturnFalseWhenWeAreNotCheckOutABook() {
+        assertFalse(library.checkOut("Harry"));
     }
 
 }

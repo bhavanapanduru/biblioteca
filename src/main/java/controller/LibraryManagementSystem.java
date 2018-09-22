@@ -14,6 +14,7 @@ public class LibraryManagementSystem {
     private final OutputDriver outputDriver;
     private final InputDriver inputDriver;
     private final Library library;
+
     private List<String> menuList;
     private HashMap<Integer, String> userChoicesToMenu;
 
@@ -37,7 +38,7 @@ public class LibraryManagementSystem {
         initializeUserChoicesToMenu();
 
         int userChoice = inputDriver.getInput();
-        int quitIndex = 2;
+        int quitIndex = 3;
 
         while (userChoice != quitIndex) {
             switch (userChoice) {
@@ -45,6 +46,9 @@ public class LibraryManagementSystem {
                     Menu.valueOf(userChoicesToMenu.get(userChoice)).act(outputDriver, inputDriver, library);
                     break;
                 case 2 :
+                    Menu.valueOf(userChoicesToMenu.get(userChoice)).act(outputDriver, inputDriver, library);
+                    break;
+                case 3 :
                     break;
                 default:
                     outputDriver.print(Message.INVALID_OPTION);
@@ -64,12 +68,14 @@ public class LibraryManagementSystem {
     private void initializeUserChoicesToMenu() {
         userChoicesToMenu = new HashMap<>();
         userChoicesToMenu.put(1, "LIST_BOOKS");
+        userChoicesToMenu.put(2, "CHECK_OUT");
     }
 
     public LibraryManagementSystem initializeMenu() {
         menuList = new ArrayList<>();
         menuList.add("1) List Books");
-        menuList.add("2) Quit");
+        menuList.add("2) Check Out Books");
+        menuList.add("3) Quit");
 
         return this;
     }

@@ -28,6 +28,24 @@ public class InputDriverTest {
         assertNotEquals(3, inputDriver.getInput());
     }
 
+    @DisplayName("Input should take strings")
+    @Test
+    void testShouldReturnString_One() {
+        setSystemIn("Harry Potter\n");
+        InputDriver inputDriver = new InputDriver();
+
+        assertEquals("Harry Potter", inputDriver.getInputString());
+    }
+
+    @DisplayName("Input should take strings")
+    @Test
+    void testShouldReturnString_Two() {
+        setSystemIn("Harry\n");
+        InputDriver inputDriver = new InputDriver();
+
+        assertNotEquals("Harry Potter", inputDriver.getInputString());
+    }
+
     private void setSystemIn(String string) {
         System.setIn(new ByteArrayInputStream(string.getBytes()));
     }

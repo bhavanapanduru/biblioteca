@@ -17,6 +17,7 @@ class LibraryManagementSystemTest {
     private InputDriver inputDriver;
     private LibraryManagementSystem libraryManagementSystem;
 
+    private Library library;
 
     @BeforeEach
     void init() {
@@ -25,6 +26,7 @@ class LibraryManagementSystemTest {
         inputDriver = mock(InputDriver.class);
 
         Library library = new LibraryHelper().createLibrary();
+
         libraryManagementSystem = new LibraryManagementSystem(outputDriver, inputDriver, library).initializeMenu();
 
     }
@@ -40,13 +42,13 @@ class LibraryManagementSystemTest {
     @DisplayName("Should Display the Menu and Do List Books operations selected by the user")
     @Test
     void testShouldDisplayTheMenuAndDoListBooksOperation() {
-        when(inputDriver.getInput()).thenReturn(Integer.valueOf("1")).thenReturn(Integer.valueOf("2"));
+        when(inputDriver.getInput()).thenReturn(Integer.valueOf("1")).thenReturn(Integer.valueOf("3"));
         libraryManagementSystem.displayMenu();
-
 
         verify(outputDriver, times(2)).print(Message.MENU_HEAD_LINE);
         verify(outputDriver, times(2)).print("1) List Books");
-        verify(outputDriver, times(2)).print("2) Quit");
+        verify(outputDriver, times(2)).print("2) Check Out Books");
+        verify(outputDriver, times(2)).print("3) Quit");
         verify(outputDriver, times(2)).print(Message.USER_CHOICE);
         verify(outputDriver).print(Message.LIST_BOOKS_HEAD_LINE);
 
@@ -56,12 +58,13 @@ class LibraryManagementSystemTest {
             " if user selects an option when it is not in the list")
     @Test
     void testShouldDisplayTheMenuAndDoInvalidOptionOperation() {
-        when(inputDriver.getInput()).thenReturn(Integer.valueOf("0")).thenReturn(Integer.valueOf("2"));
+        when(inputDriver.getInput()).thenReturn(Integer.valueOf("0")).thenReturn(Integer.valueOf("3"));
         libraryManagementSystem.displayMenu();
 
         verify(outputDriver, times(2)).print(Message.MENU_HEAD_LINE);
         verify(outputDriver, times(2)).print("1) List Books");
-        verify(outputDriver, times(2)).print("2) Quit");
+        verify(outputDriver, times(2)).print("2) Check Out Books");
+        verify(outputDriver, times(2)).print("3) Quit");
         verify(outputDriver, times(2)).print(Message.USER_CHOICE);
         verify(outputDriver).print(Message.INVALID_OPTION);
     }
@@ -69,12 +72,13 @@ class LibraryManagementSystemTest {
     @DisplayName("Should Display the Menu, if user selects an 'Quit' option then stop the system")
     @Test
     void testShouldDisplayTheMenuAndDoQuitOptionOperation() {
-        when(inputDriver.getInput()).thenReturn(Integer.valueOf("2"));
+        when(inputDriver.getInput()).thenReturn(Integer.valueOf("3"));
         libraryManagementSystem.displayMenu();
 
         verify(outputDriver).print(Message.MENU_HEAD_LINE);
         verify(outputDriver).print("1) List Books");
-        verify(outputDriver).print("2) Quit");
+        verify(outputDriver).print("2) Check Out Books");
+        verify(outputDriver).print("3) Quit");
         verify(outputDriver).print(Message.USER_CHOICE);
     }
 

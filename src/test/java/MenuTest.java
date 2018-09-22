@@ -10,12 +10,14 @@ import view.OutputDriver;
 
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 public class MenuTest {
 
     private OutputDriver outputDriver;
     private InputDriver inputDriver;
     private Library library ;
+    private Library libraryMock;
 
 
     @BeforeEach
@@ -25,6 +27,8 @@ public class MenuTest {
         inputDriver = mock(InputDriver.class);
 
         library = new LibraryHelper().createLibrary();
+        libraryMock = mock(Library.class);
+
 
     }
 
@@ -39,4 +43,17 @@ public class MenuTest {
         verify(outputDriver).printTextWithColumnWise("Harry Potter,a,1990");
         verify(outputDriver).printTextWithColumnWise("The Half GirlFriend,b,1991");
     }
+
+    @DisplayName("Customer can check out the book")
+    @Test
+    void testForCheckOutTheBook() {
+        Menu.values()[1].act(outputDriver, inputDriver, library);
+
+        when(inputDriver.getInputString()).thenReturn("").thenReturn("Harry Potter");
+
+        verify(outputDriver).print(Message.CHECKOUT_USER_HEADER);
+        //verify(libraryMock).checkOut("Harry Potter");
+    }
+
+
 }

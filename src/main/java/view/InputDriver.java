@@ -10,4 +10,7 @@ public class InputDriver {
         return scanner.nextInt();
     }
 
+    public String getInputString() {
+        return scanner.nextLine();
+    }
 }
