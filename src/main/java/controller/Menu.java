@@ -5,7 +5,7 @@ import model.Message;
 import view.InputDriver;
 import view.OutputDriver;
 
-import java.util.List;
+import static java.lang.System.exit;
 
 public enum Menu {
 
@@ -13,11 +13,10 @@ public enum Menu {
         @Override
         public void act(OutputDriver outputDriver, InputDriver inputDriver, Library library) {
 
-            List<String> bookList = library.getBookDetails();
-
             outputDriver.print(Message.LIST_BOOKS_HEAD_LINE);
             outputDriver.printTextWithColumnWise("Title,Author,Published Year");
-            bookList.forEach(outputDriver::printTextWithColumnWise);
+            library.getBookDetails().forEach(outputDriver::printTextWithColumnWise);
+
         }
     },
 
@@ -25,17 +24,25 @@ public enum Menu {
         @Override
         public void act(OutputDriver outputDriver, InputDriver inputDriver, Library library) {
 
-            outputDriver.print(Message.CHECKOUT_USER_HEADER);
+            outputDriver.print(Message.CHECKOUT_BOOK_HEADER);
+            inputDriver.getInputString();   // Takes new Line
+            String checkOutBookTitle = inputDriver.getInputString();
 
-            inputDriver.getInputString();
-            String userCheckOutBookTitle = inputDriver.getInputString();
+            outputDriver.print(library.checkoutBook(checkOutBookTitle)
+                    ? Message.SUCCESSFUL_CHECKOUT_BOOK_MESSAGE : Message.UNSUCCESSFUL_CHECKOUT_BOOK_MESSAGE);
 
-            if (library.checkOut(userCheckOutBookTitle)) {
-                outputDriver.print(Message.SUCCESSFULLY_CHECKEDOUT_BOOK_MESSAGE);
-            }
-            else {
-                outputDriver.print(Message.UNSUCCESSFUL_CHECKEDOUT_BOOK_MESSAGE);
-            }
+        }
+    },
+
+    RETURN_BOOK() {
+        @Override
+        public void act(OutputDriver outputDriver, InputDriver inputDriver, Library library) {
+            outputDriver.print(Message.RETURN_BOOK_HEADER);
+            inputDriver.getInputString();   // Takes new Line
+            String returnBookTitle = inputDriver.getInputString();
+
+            outputDriver.print(library.returnBook(returnBookTitle)
+                    ? Message.SUCCESSFUL_RETURN_BOOK_MESSAGE : Message.UNSUCCESSFUL_RETURN_BOOK_MESSAGE);
 
         }
     };

@@ -1,7 +1,5 @@
 package model;
 
-import model.Library;
-import model.LibraryHelper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -29,34 +27,29 @@ public class LibraryTest {
 
     }
 
-    @DisplayName("Should return true if book is available")
-    @Test
-    void testShouldReturnTrueIfBookIsAvailable() {
-        assertAll(
-                () -> assertEquals(0, library.checkBookIsAvailable("Harry Potter")),
-                () -> assertEquals(1, library.checkBookIsAvailable("The Half GirlFriend"))
-        );
-    }
-
-    @DisplayName("Should return false if book is not available")
-    @Test
-    void testShouldReturnFalseIfBookIsNotAvailable() {
-        assertAll(
-                () -> assertNotEquals(1, library.checkBookIsAvailable("Harry Potter")),
-                () -> assertNotEquals(0, library.checkBookIsAvailable("The Half GirlFriend"))
-        );
-    }
-
     @DisplayName("Should return true if book is successfully checkedOut")
     @Test
     void testShouldReturnTrueWhenWeCheckOutABook() {
-        assertTrue(library.checkOut("Harry Potter"));
+        assertTrue(library.checkoutBook("Harry Potter"));
     }
 
     @DisplayName("Should return false if book is not successfully checkedOut")
     @Test
     void testShouldReturnFalseWhenWeAreNotCheckOutABook() {
-        assertFalse(library.checkOut("Harry"));
+        assertFalse(library.checkoutBook("Harry"));
+    }
+
+    @DisplayName("Should return true if book is successfully returned")
+    @Test
+    void testShouldReturnTrueWhenReturnABookSuccessful() {
+        testShouldReturnTrueWhenWeCheckOutABook();
+        assertTrue(library.returnBook("Harry Potter"));
+    }
+
+    @DisplayName("Should return false if book is not successfully returned")
+    @Test
+    void testShouldReturnFalseWhenReturnABookUnsuccessful() {
+        assertFalse(library.returnBook("Harry"));
     }
 
 }

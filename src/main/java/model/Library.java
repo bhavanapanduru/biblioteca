@@ -1,5 +1,6 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -7,35 +8,41 @@ import java.util.stream.Collectors;
 public class Library {
 
     private final List<Book> books;
+    private List<Book> checkedOutBooks;
 
     Library(final List<Book> books) {
         this.books = books;
+        checkedOutBooks = new ArrayList<>();
     }
 
     public List<String> getBookDetails() {
         return books.stream().map(Book::toString).collect(Collectors.toList());
     }
 
-    public int checkBookIsAvailable(String userCheckOutBookTitle) {
+    public boolean checkoutBook(String checkOutBookTitle) {
 
-        Book userCheckOutBook = new Book(userCheckOutBookTitle, "", 0);
-
-        for (int bookIndex = 0; bookIndex < books.size(); bookIndex++) {
-            if(books.get(bookIndex).equals(userCheckOutBook)) {
-                return bookIndex;
+        for (Book book: books) {
+            if (book.equals(new Book(checkOutBookTitle,"",0))) {
+                checkedOutBooks.add(book);
+                books.remove(book);
+                return true;
             }
         }
 
-        return -1;
+        return false;
     }
 
-    public boolean checkOut(String userCheckOutBookTitle) {
+    public boolean returnBook(String returnBookTitle) {
 
-        int checkOutBookIndex = checkBookIsAvailable(userCheckOutBookTitle);
+        Book returnBook = new Book(returnBookTitle, "", 0);
 
-        if(checkOutBookIndex != -1) {
-            books.remove(checkOutBookIndex);
-            return true;
+        for (Book checkedOutBook: checkedOutBooks) {
+            if(checkedOutBook.equals(returnBook)) {
+                books.add(checkedOutBook);
+                checkedOutBooks.remove(checkedOutBook);
+                return true;
+            }
+
         }
 
         return false;

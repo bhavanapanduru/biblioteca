@@ -38,21 +38,16 @@ public class LibraryManagementSystem {
         initializeUserChoicesToMenu();
 
         int userChoice = inputDriver.getInput();
-        int quitIndex = 3;
+        int quitIndex = 4;
 
         while (userChoice != quitIndex) {
-            switch (userChoice) {
-                case 1:
-                    Menu.valueOf(userChoicesToMenu.get(userChoice)).act(outputDriver, inputDriver, library);
-                    break;
-                case 2 :
-                    Menu.valueOf(userChoicesToMenu.get(userChoice)).act(outputDriver, inputDriver, library);
-                    break;
-                case 3 :
-                    break;
-                default:
-                    outputDriver.print(Message.INVALID_OPTION);
+
+            if (userChoicesToMenu.containsKey(userChoice)) {
+                Menu.valueOf(userChoicesToMenu.get(userChoice)).act(outputDriver, inputDriver, library);
+            } else {
+                outputDriver.print(Message.INVALID_CHOICE);
             }
+
             printMenu();
             userChoice = inputDriver.getInput();
         }
@@ -69,13 +64,15 @@ public class LibraryManagementSystem {
         userChoicesToMenu = new HashMap<>();
         userChoicesToMenu.put(1, "LIST_BOOKS");
         userChoicesToMenu.put(2, "CHECK_OUT");
+        userChoicesToMenu.put(3, "RETURN_BOOK");
     }
 
     public LibraryManagementSystem initializeMenu() {
         menuList = new ArrayList<>();
         menuList.add("1) List Books");
-        menuList.add("2) Check Out Books");
-        menuList.add("3) Quit");
+        menuList.add("2) Checkout Book");
+        menuList.add("3) Return Book");
+        menuList.add("4) Quit");
 
         return this;
     }
