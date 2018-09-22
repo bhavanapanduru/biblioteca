@@ -63,7 +63,7 @@ public class LibraryManagementSystem {
     private void initializeUserChoicesToMenu() {
         userChoicesToMenu = new HashMap<>();
         userChoicesToMenu.put(1, "LIST_BOOKS");
-        userChoicesToMenu.put(2, "CHECK_OUT");
+        userChoicesToMenu.put(2, "CHECKOUT_BOOK");
         userChoicesToMenu.put(3, "RETURN_BOOK");
     }
 
