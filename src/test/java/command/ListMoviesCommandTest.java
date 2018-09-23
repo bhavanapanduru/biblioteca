@@ -1,6 +1,7 @@
 package command;
 
 import model.Library;
+import model.LibraryActionListener;
 import model.LibraryHelper;
 import model.Message;
 import org.junit.jupiter.api.BeforeEach;
@@ -23,7 +24,8 @@ class ListMoviesCommandTest {
     void init() {
         outputDriver = mock(OutputDriver.class);
         inputDriver = mock(InputDriver.class);
-        library = new LibraryHelper().createLibrary();
+        LibraryActionListener librarian = mock(LibraryActionListener.class);
+        library = new LibraryHelper().createLibrary(librarian);
         listMoviesCommand = new ListMoviesCommand();
     }
 

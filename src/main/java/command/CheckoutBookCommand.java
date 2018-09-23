@@ -10,14 +10,20 @@ public class CheckoutBookCommand implements command {
     @Override
     public void act(OutputDriver outputDriver, InputDriver inputDriver, Library library) {
 
-        outputDriver.print(Message.CHECKOUT_BOOK_HEADER);
-        inputDriver.getInputString();   // Takes new Line
-        String checkOutBookTitle = inputDriver.getInputString();
+        if (library.userLoggedIn()) {
 
-        LibraryItem libraryItemObject = new Book(checkOutBookTitle, "", 0);
+            outputDriver.print(Message.CHECKOUT_BOOK_HEADER);
+            inputDriver.getInputString();   // Takes new Line
+            String checkOutBookTitle = inputDriver.getInputString();
 
-        outputDriver.print(library.checkoutLibraryItem(libraryItemObject, LibraryItemType.BOOK)
-                ? Message.SUCCESSFUL_CHECKOUT_BOOK_MESSAGE : Message.UNSUCCESSFUL_CHECKOUT_BOOK_MESSAGE);
+            LibraryItem libraryItemObject = new Book(checkOutBookTitle, "", 0);
+
+            outputDriver.print(library.checkoutLibraryItem(libraryItemObject, LibraryItemType.BOOK)
+                    ? Message.SUCCESSFUL_CHECKOUT_BOOK_MESSAGE : Message.UNSUCCESSFUL_CHECKOUT_BOOK_MESSAGE);
+
+        } else {
+            outputDriver.print(Message.PLEASE_LOGIN);
+        }
 
     }
 }

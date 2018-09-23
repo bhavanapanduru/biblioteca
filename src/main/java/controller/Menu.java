@@ -13,7 +13,9 @@ public enum Menu {
     RETURN_BOOK(new ReturnBookCommand()),
     LIST_MOVIES(new ListMoviesCommand()),
     CHECKOUT_MOVIE(new CheckoutMovieCommand()),
-    RETURN_MOVIE(new ReturnMovieCommand());
+    RETURN_MOVIE(new ReturnMovieCommand()),
+    LOGIN(new LoginCommand()),
+    USER_INFORMATION(new UserInformationCommand());
 
     private command command;
 

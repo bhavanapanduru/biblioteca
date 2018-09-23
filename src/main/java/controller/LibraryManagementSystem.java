@@ -39,7 +39,7 @@ public class LibraryManagementSystem {
         initializeUserChoicesToMenu();
 
         int userChoice = inputDriver.getInput();
-        int quitIndex = 7;
+        int quitIndex = 9;
 
         while (userChoice != quitIndex) {
 
@@ -69,6 +69,8 @@ public class LibraryManagementSystem {
         userChoicesToMenu.put(4, "LIST_MOVIES");
         userChoicesToMenu.put(5, "CHECKOUT_MOVIE");
         userChoicesToMenu.put(6, "RETURN_MOVIE");
+        userChoicesToMenu.put(7, "LOGIN");
+        userChoicesToMenu.put(8, "USER_INFORMATION");
     }
 
     public LibraryManagementSystem initializeMenu() {
@@ -79,7 +81,9 @@ public class LibraryManagementSystem {
         menuList.add("4) List Movies");
         menuList.add("5) Checkout Movie");
         menuList.add("6) Return Movie");
-        menuList.add("7) Quit");
+        menuList.add("7) Login");
+        menuList.add("8) User Information");
+        menuList.add("9) Quit");
 
         return this;
     }

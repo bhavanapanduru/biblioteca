@@ -10,14 +10,21 @@ public class ReturnBookCommand implements command {
     @Override
     public void act(OutputDriver outputDriver, InputDriver inputDriver, Library library) {
 
-        outputDriver.print(Message.RETURN_BOOK_HEADER);
-        inputDriver.getInputString();   // Takes new Line
-        String returnBookTitle = inputDriver.getInputString();
+        if (library.userLoggedIn()) {
 
-        LibraryItem libraryItemObject = new Book(returnBookTitle, "", 0);
+            outputDriver.print(Message.RETURN_BOOK_HEADER);
+            inputDriver.getInputString();   // Takes new Line
+            String returnBookTitle = inputDriver.getInputString();
 
-        outputDriver.print(library.returnLibraryItem(libraryItemObject, LibraryItemType.BOOK)
-                ? Message.SUCCESSFUL_RETURN_BOOK_MESSAGE : Message.UNSUCCESSFUL_RETURN_BOOK_MESSAGE);
+            LibraryItem libraryItemObject = new Book(returnBookTitle, "", 0);
+
+            outputDriver.print(library.returnLibraryItem(libraryItemObject, LibraryItemType.BOOK)
+                    ? Message.SUCCESSFUL_RETURN_BOOK_MESSAGE : Message.UNSUCCESSFUL_RETURN_BOOK_MESSAGE);
+
+        } else {
+            outputDriver.print(Message.PLEASE_LOGIN);
+        }
+
 
     }
 }

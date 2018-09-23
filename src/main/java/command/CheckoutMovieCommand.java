@@ -10,14 +10,20 @@ public class CheckoutMovieCommand implements command {
     @Override
     public void act(OutputDriver outputDriver, InputDriver inputDriver, Library library) {
 
-        outputDriver.print(Message.CHECKOUT_MOVIE_HEADER);
-        inputDriver.getInputString();   // Takes new Line
-        String checkOutMovieTitle = inputDriver.getInputString();
+        if (library.userLoggedIn()) {
 
-        LibraryItem libraryItemObject = new Movie(checkOutMovieTitle, 0, "", "");
+            outputDriver.print(Message.CHECKOUT_MOVIE_HEADER);
+            inputDriver.getInputString();   // Takes new Line
+            String checkOutMovieTitle = inputDriver.getInputString();
 
-        outputDriver.print(library.checkoutLibraryItem(libraryItemObject, LibraryItemType.MOVIE)
-                ? Message.SUCCESSFUL_CHECKOUT_MOVIE_MESSAGE : Message.UNSUCCESSFUL_CHECKOUT_MOVIE_MESSAGE);
+            LibraryItem libraryItemObject = new Movie(checkOutMovieTitle, 0, "", "");
+
+            outputDriver.print(library.checkoutLibraryItem(libraryItemObject, LibraryItemType.MOVIE)
+                    ? Message.SUCCESSFUL_CHECKOUT_MOVIE_MESSAGE : Message.UNSUCCESSFUL_CHECKOUT_MOVIE_MESSAGE);
+
+        } else {
+            outputDriver.print(Message.PLEASE_LOGIN);
+        }
 
     }
 }
