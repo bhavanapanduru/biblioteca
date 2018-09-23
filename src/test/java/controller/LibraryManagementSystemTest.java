@@ -19,12 +19,13 @@ class LibraryManagementSystemTest {
     private OutputDriver outputDriver;
     private InputDriver inputDriver;
     private LibraryManagementSystem libraryManagementSystem;
+    private Library library;
 
     @BeforeEach
     void init() {
         outputDriver = mock(OutputDriver.class);
         inputDriver = mock(InputDriver.class);
-        Library library = new LibraryHelper().createLibrary();
+        library = new LibraryHelper().createLibrary();
         libraryManagementSystem = new LibraryManagementSystem(outputDriver, inputDriver, library).initializeMenu();
     }
 
@@ -39,81 +40,150 @@ class LibraryManagementSystemTest {
     @DisplayName("Should Display the Menu and Do List_Books operations selected by the user")
     @Test
     void testShouldDisplayTheMenuAndDoListBooksOperation() {
-        when(inputDriver.getInput()).thenReturn(Integer.valueOf("1")).thenReturn(Integer.valueOf("4"));
+        when(inputDriver.getInput()).thenReturn(Integer.valueOf("1")).thenReturn(Integer.valueOf("7"));
         libraryManagementSystem.displayMenu();
 
         verify(outputDriver, times(2)).print(Message.MENU_HEAD_LINE);
         verify(outputDriver, times(2)).print("1) List Books");
         verify(outputDriver, times(2)).print("2) Checkout Book");
         verify(outputDriver, times(2)).print("3) Return Book");
-        verify(outputDriver, times(2)).print("4) Quit");
+        verify(outputDriver, times(2)).print("4) List Movies");
+        verify(outputDriver, times(2)).print("5) Checkout Movie");
+        verify(outputDriver, times(2)).print("6) Return Movie");
+        verify(outputDriver, times(2)).print("7) Quit");
         verify(outputDriver, times(2)).print(Message.USER_CHOICE);
         verify(outputDriver).print(Message.LIST_BOOKS_HEAD_LINE);
+    }
+
+    @DisplayName("Should Display the Menu and Do List_Movies operations selected by the user")
+    @Test
+    void testShouldDisplayTheMenuAndDoListMoviesOperation() {
+        when(inputDriver.getInput()).thenReturn(Integer.valueOf("4")).thenReturn(Integer.valueOf("7"));
+        libraryManagementSystem.displayMenu();
+
+        verify(outputDriver, times(2)).print(Message.MENU_HEAD_LINE);
+        verify(outputDriver, times(2)).print("1) List Books");
+        verify(outputDriver, times(2)).print("2) Checkout Book");
+        verify(outputDriver, times(2)).print("3) Return Book");
+        verify(outputDriver, times(2)).print("4) List Movies");
+        verify(outputDriver, times(2)).print("5) Checkout Movie");
+        verify(outputDriver, times(2)).print("6) Return Movie");
+        verify(outputDriver, times(2)).print("7) Quit");
+        verify(outputDriver, times(2)).print(Message.USER_CHOICE);
+        verify(outputDriver).print(Message.LIST_MOVIES_HEAD_LINE);
     }
 
     @DisplayName("Should Display the Menu and show Invalid_Choice when user selected wrong option")
     @Test
     void testShouldDisplayTheMenuAndDoInvalidOptionOperation() {
-        when(inputDriver.getInput()).thenReturn(Integer.valueOf("0")).thenReturn(Integer.valueOf("4"));
+        when(inputDriver.getInput()).thenReturn(Integer.valueOf("0")).thenReturn(Integer.valueOf("7"));
         libraryManagementSystem.displayMenu();
 
         verify(outputDriver, times(2)).print(Message.MENU_HEAD_LINE);
         verify(outputDriver, times(2)).print("1) List Books");
         verify(outputDriver, times(2)).print("2) Checkout Book");
         verify(outputDriver, times(2)).print("3) Return Book");
-        verify(outputDriver, times(2)).print("4) Quit");
+        verify(outputDriver, times(2)).print("4) List Movies");
+        verify(outputDriver, times(2)).print("5) Checkout Movie");
+        verify(outputDriver, times(2)).print("6) Return Movie");
+        verify(outputDriver, times(2)).print("7) Quit");
         verify(outputDriver, times(2)).print(Message.USER_CHOICE);
-        verify(outputDriver).print(Message.INVALID_CHOICE);
+        verify(outputDriver).print(Message.INVALID_CHOICE_MESSAGE);
     }
 
     @DisplayName("Should Display the Menu, show messages when user selects 'Checkout Book' option ")
     @Test
     void testShouldDisplayTheMenuAndDoCheckoutBookOptionOperation() {
-        when(inputDriver.getInput()).thenReturn(Integer.valueOf("2")).thenReturn(Integer.valueOf("4"));
+        when(inputDriver.getInput()).thenReturn(Integer.valueOf("2")).thenReturn(Integer.valueOf("7"));
         libraryManagementSystem.displayMenu();
 
         verify(outputDriver, times(2)).print(Message.MENU_HEAD_LINE);
         verify(outputDriver, times(2)).print("1) List Books");
         verify(outputDriver, times(2)).print("2) Checkout Book");
         verify(outputDriver, times(2)).print("3) Return Book");
-        verify(outputDriver, times(2)).print("4) Quit");
+        verify(outputDriver, times(2)).print("4) List Movies");
+        verify(outputDriver, times(2)).print("5) Checkout Movie");
+        verify(outputDriver, times(2)).print("6) Return Movie");
+        verify(outputDriver, times(2)).print("7) Quit");
         verify(outputDriver, times(2)).print(Message.USER_CHOICE);
         verify(outputDriver).print(Message.CHECKOUT_BOOK_HEADER);
+    }
+
+    @DisplayName("Should Display the Menu, show messages when user selects 'Checkout Movie' option ")
+    @Test
+    void testShouldDisplayTheMenuAndDoCheckoutMovieOptionOperation() {
+        when(inputDriver.getInput()).thenReturn(Integer.valueOf("5")).thenReturn(Integer.valueOf("7"));
+        libraryManagementSystem.displayMenu();
+
+        verify(outputDriver, times(2)).print(Message.MENU_HEAD_LINE);
+        verify(outputDriver, times(2)).print("1) List Books");
+        verify(outputDriver, times(2)).print("2) Checkout Book");
+        verify(outputDriver, times(2)).print("3) Return Book");
+        verify(outputDriver, times(2)).print("4) List Movies");
+        verify(outputDriver, times(2)).print("5) Checkout Movie");
+        verify(outputDriver, times(2)).print("6) Return Movie");
+        verify(outputDriver, times(2)).print("7) Quit");
+        verify(outputDriver, times(2)).print(Message.USER_CHOICE);
+        verify(outputDriver).print(Message.CHECKOUT_MOVIE_HEADER);
     }
 
     @DisplayName("Should Display the Menu, show messages when user selects 'Return Book' option")
     @Test
     void testShouldDisplayTheMenuAndDoReturnBookOptionOperation() {
-        when(inputDriver.getInput()).thenReturn(Integer.valueOf("3")).thenReturn(Integer.valueOf("4"));
+        when(inputDriver.getInput()).thenReturn(Integer.valueOf("3")).thenReturn(Integer.valueOf("7"));
         libraryManagementSystem.displayMenu();
 
         verify(outputDriver, times(2)).print(Message.MENU_HEAD_LINE);
         verify(outputDriver, times(2)).print("1) List Books");
         verify(outputDriver, times(2)).print("2) Checkout Book");
         verify(outputDriver, times(2)).print("3) Return Book");
-        verify(outputDriver, times(2)).print("4) Quit");
+        verify(outputDriver, times(2)).print("4) List Movies");
+        verify(outputDriver, times(2)).print("5) Checkout Movie");
+        verify(outputDriver, times(2)).print("6) Return Movie");
+        verify(outputDriver, times(2)).print("7) Quit");
         verify(outputDriver, times(2)).print(Message.USER_CHOICE);
         verify(outputDriver).print(Message.RETURN_BOOK_HEADER);
+    }
+
+    @DisplayName("Should Display the Menu, show messages when user selects 'Return Movie' option")
+    @Test
+    void testShouldDisplayTheMenuAndDoReturnMovieOptionOperation() {
+        when(inputDriver.getInput()).thenReturn(Integer.valueOf("6")).thenReturn(Integer.valueOf("7"));
+        libraryManagementSystem.displayMenu();
+
+        verify(outputDriver, times(2)).print(Message.MENU_HEAD_LINE);
+        verify(outputDriver, times(2)).print("1) List Books");
+        verify(outputDriver, times(2)).print("2) Checkout Book");
+        verify(outputDriver, times(2)).print("3) Return Book");
+        verify(outputDriver, times(2)).print("4) List Movies");
+        verify(outputDriver, times(2)).print("5) Checkout Movie");
+        verify(outputDriver, times(2)).print("6) Return Movie");
+        verify(outputDriver, times(2)).print("7) Quit");
+        verify(outputDriver, times(2)).print(Message.USER_CHOICE);
+        verify(outputDriver).print(Message.RETURN_MOVIE_HEADER);
     }
 
     @DisplayName("Should Display the Menu,  if user selects an 'Quit' option then stop the system")
     @Test
     void testShouldDisplayTheMenuAndDoQuitOptionOperation() {
-        when(inputDriver.getInput()).thenReturn(Integer.valueOf("4"));
+        when(inputDriver.getInput()).thenReturn(Integer.valueOf("7"));
         libraryManagementSystem.displayMenu();
 
         verify(outputDriver).print(Message.MENU_HEAD_LINE);
         verify(outputDriver).print("1) List Books");
         verify(outputDriver).print("2) Checkout Book");
         verify(outputDriver).print("3) Return Book");
-        verify(outputDriver).print("4) Quit");
+        verify(outputDriver).print("4) List Movies");
+        verify(outputDriver).print("5) Checkout Movie");
+        verify(outputDriver).print("6) Return Movie");
+        verify(outputDriver).print("7) Quit");
         verify(outputDriver).print(Message.USER_CHOICE);
     }
 
     @DisplayName(" should initialize the menu list")
     @Test
     void testShouldInitializeTheMenuList(){
-        assertEquals(LibraryManagementSystem.class , libraryManagementSystem.initializeMenu().getClass() );
+        assertEquals(LibraryManagementSystem.class, libraryManagementSystem.initializeMenu().getClass() );
     }
 
 }

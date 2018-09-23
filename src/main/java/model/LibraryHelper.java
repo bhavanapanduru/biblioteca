@@ -1,16 +1,21 @@
 package model;
 
-public class LibraryHelper {
+import java.util.ArrayList;
+import java.util.List;
 
-    private Library library;
-    private BookHelper bookHelper;
+// LibraryHelper is used to create a new Library for the Library Management System.
+public class LibraryHelper {
 
     public Library createLibrary() {
 
-        bookHelper = new BookHelper();
-        library = new Library(bookHelper.getBooks());
+        BookHelper bookHelper = new BookHelper();
+        MovieHelper movieHelper = new MovieHelper();
 
-        return library;
+        List<LibraryItem> availableItemList = new ArrayList<>();
+        availableItemList.addAll(bookHelper.getBooks());
+        availableItemList.addAll(movieHelper.getMovies());
+
+        return new Library(availableItemList);
 
     }
 

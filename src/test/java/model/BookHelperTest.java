@@ -1,7 +1,5 @@
 package model;
 
-import model.Book;
-import model.BookHelper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -12,10 +10,10 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
-public class BookHelperTest {
+class BookHelperTest {
 
     private BookHelper bookHelper;
-    private List<Book> books;
+    private List<LibraryItem> books;
 
     @BeforeEach
     void init() {
@@ -29,15 +27,15 @@ public class BookHelperTest {
         books.add(new Book("Half GirlFriend", "b", 1991));
     }
 
-    @DisplayName("Should return Books")
+    @DisplayName("Should return correct Books")
     @Test
-    void testShouldReturnBooks() {
+    void testShouldReturnCorrectBooks() {
 
-        assertEquals(books.get(0).toString() , bookHelper.getBooks().get(0).toString());
-        assertEquals(books.get(1).toString() , bookHelper.getBooks().get(1).toString());
+        assertEquals(books.get(0).getDetails(LibraryItemType.BOOK) , bookHelper.getBooks().get(0).getDetails(LibraryItemType.BOOK));
+        assertEquals(books.get(1).getDetails(LibraryItemType.BOOK) , bookHelper.getBooks().get(1).getDetails(LibraryItemType.BOOK));
 
-        assertNotEquals(books.get(2).toString() , bookHelper.getBooks().get(0).toString());
-        assertNotEquals(books.get(3).toString() , bookHelper.getBooks().get(1).toString());
+        assertNotEquals(books.get(2).getDetails(LibraryItemType.BOOK) , bookHelper.getBooks().get(0).getDetails(LibraryItemType.BOOK));
+        assertNotEquals(books.get(3).getDetails(LibraryItemType.BOOK) , bookHelper.getBooks().get(1).getDetails(LibraryItemType.BOOK));
 
     }
 

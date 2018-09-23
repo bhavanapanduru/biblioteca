@@ -1,19 +1,19 @@
 package controller;
 
-import command.ListBooksCommand;
-import command.CheckoutBookCommand;
-import command.ReturnBookCommand;
-import command.command;
+import command.*;
 import model.Library;
 import view.InputDriver;
 import view.OutputDriver;
 
-// Menu has set of operations that performs action on a library
+// Menu has set of operations that performs action on a library Items
 public enum Menu {
 
     LIST_BOOKS(new ListBooksCommand()),
     CHECKOUT_BOOK(new CheckoutBookCommand()),
-    RETURN_BOOK(new ReturnBookCommand());
+    RETURN_BOOK(new ReturnBookCommand()),
+    LIST_MOVIES(new ListMoviesCommand()),
+    CHECKOUT_MOVIE(new CheckoutMovieCommand()),
+    RETURN_MOVIE(new ReturnMovieCommand());
 
     private command command;
 

@@ -1,10 +1,10 @@
 package command;
 
-import model.Library;
-import model.Message;
+import model.*;
 import view.InputDriver;
 import view.OutputDriver;
 
+// CheckoutBookCommand is used to perform the action to check out the book from the library
 public class CheckoutBookCommand implements command {
 
     @Override
@@ -14,7 +14,9 @@ public class CheckoutBookCommand implements command {
         inputDriver.getInputString();   // Takes new Line
         String checkOutBookTitle = inputDriver.getInputString();
 
-        outputDriver.print(library.checkoutBook(checkOutBookTitle)
+        LibraryItem libraryItemObject = new Book(checkOutBookTitle, "", 0);
+
+        outputDriver.print(library.checkoutLibraryItem(libraryItemObject, LibraryItemType.BOOK)
                 ? Message.SUCCESSFUL_CHECKOUT_BOOK_MESSAGE : Message.UNSUCCESSFUL_CHECKOUT_BOOK_MESSAGE);
 
     }

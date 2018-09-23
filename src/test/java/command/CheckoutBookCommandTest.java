@@ -1,8 +1,8 @@
 package command;
 
-import controller.Menu;
 import model.Library;
 import model.LibraryHelper;
+import model.LibraryItemType;
 import model.Message;
 import view.InputDriver;
 import view.OutputDriver;
@@ -39,7 +39,7 @@ class CheckoutBookCommandTest {
 
         verify(outputDriver).print(Message.CHECKOUT_BOOK_HEADER);
         verify(outputDriver).print(Message.SUCCESSFUL_CHECKOUT_BOOK_MESSAGE);
-        assertEquals(1, library.getBookDetails().size());
+        assertEquals(1, library.getLibraryItemDetails(LibraryItemType.BOOK).size());
     }
 
 
@@ -51,6 +51,6 @@ class CheckoutBookCommandTest {
 
         verify(outputDriver).print(Message.CHECKOUT_BOOK_HEADER);
         verify(outputDriver).print(Message.UNSUCCESSFUL_CHECKOUT_BOOK_MESSAGE);
-        assertEquals(2, library.getBookDetails().size());
+        assertEquals(2, library.getLibraryItemDetails(LibraryItemType.BOOK).size());
     }
 }

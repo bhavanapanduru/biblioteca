@@ -3,11 +3,12 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BookHelper {
+// BookHelper is used to create books for the library
+class BookHelper {
 
-    private List<Book> books;
+    private List<LibraryItem> books;
 
-    public BookHelper() {
+    BookHelper() {
 
         books = new ArrayList<>();
 
@@ -16,7 +17,7 @@ public class BookHelper {
 
     }
 
-    public List<Book> getBooks() {
+    List<LibraryItem> getBooks() {
         return books;
     }
 }

@@ -1,11 +1,11 @@
 package command;
 
-import model.Library;
-import model.Message;
+import model.*;
 import view.InputDriver;
 import view.OutputDriver;
 
-public class ReturnBookCommand implements command{
+// ReturnBookCommand is used to perform the action that is return the book to the library
+public class ReturnBookCommand implements command {
 
     @Override
     public void act(OutputDriver outputDriver, InputDriver inputDriver, Library library) {
@@ -14,7 +14,9 @@ public class ReturnBookCommand implements command{
         inputDriver.getInputString();   // Takes new Line
         String returnBookTitle = inputDriver.getInputString();
 
-        outputDriver.print(library.returnBook(returnBookTitle)
+        LibraryItem libraryItemObject = new Book(returnBookTitle, "", 0);
+
+        outputDriver.print(library.returnLibraryItem(libraryItemObject, LibraryItemType.BOOK)
                 ? Message.SUCCESSFUL_RETURN_BOOK_MESSAGE : Message.UNSUCCESSFUL_RETURN_BOOK_MESSAGE);
 
     }

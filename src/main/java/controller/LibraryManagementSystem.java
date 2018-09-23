@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+// LibraryManagementSystem manages the library
 public class LibraryManagementSystem {
 
     private final OutputDriver outputDriver;
@@ -38,14 +39,14 @@ public class LibraryManagementSystem {
         initializeUserChoicesToMenu();
 
         int userChoice = inputDriver.getInput();
-        int quitIndex = 4;
+        int quitIndex = 7;
 
         while (userChoice != quitIndex) {
 
             if (userChoicesToMenu.containsKey(userChoice)) {
                 Menu.valueOf(userChoicesToMenu.get(userChoice)).act(outputDriver, inputDriver, library);
             } else {
-                outputDriver.print(Message.INVALID_CHOICE);
+                outputDriver.print(Message.INVALID_CHOICE_MESSAGE);
             }
 
             printMenu();
@@ -65,6 +66,9 @@ public class LibraryManagementSystem {
         userChoicesToMenu.put(1, "LIST_BOOKS");
         userChoicesToMenu.put(2, "CHECKOUT_BOOK");
         userChoicesToMenu.put(3, "RETURN_BOOK");
+        userChoicesToMenu.put(4, "LIST_MOVIES");
+        userChoicesToMenu.put(5, "CHECKOUT_MOVIE");
+        userChoicesToMenu.put(6, "RETURN_MOVIE");
     }
 
     public LibraryManagementSystem initializeMenu() {
@@ -72,7 +76,10 @@ public class LibraryManagementSystem {
         menuList.add("1) List Books");
         menuList.add("2) Checkout Book");
         menuList.add("3) Return Book");
-        menuList.add("4) Quit");
+        menuList.add("4) List Movies");
+        menuList.add("5) Checkout Movie");
+        menuList.add("6) Return Movie");
+        menuList.add("7) Quit");
 
         return this;
     }

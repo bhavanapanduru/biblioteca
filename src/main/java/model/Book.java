@@ -2,10 +2,12 @@ package model;
 
 import java.util.Objects;
 
-public class Book {
+// Book is a LibraryItem has state like title, author, published year.
+public class Book implements LibraryItem{
     private final String title;
     private final String author;
     private final int publishedYear;
+    private final LibraryItemType itemType = LibraryItemType.BOOK;
 
     public Book(String title, String author, int publishedYear) {
         this.title = title;
@@ -13,25 +15,24 @@ public class Book {
         this.publishedYear = publishedYear;
     }
 
-    @Override
-    public String toString() {
-        return title + "," + author + "," + publishedYear;
+    public String getDetails(LibraryItemType libraryItemType) {
+        if(libraryItemType == LibraryItemType.BOOK) {
+            return title + "," + author + "," + publishedYear;
+        }
+        return "";
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o){
-            return true;
+    public boolean compareItem(LibraryItem libraryItemObject, LibraryItemType libraryItemType) {
+        if(libraryItemType == LibraryItemType.BOOK) {
+            if (this == libraryItemObject){
+                return true;
+            }
+            if (libraryItemObject == null || getClass() != libraryItemObject.getClass()){
+                return false;
+            }
+            Book book = (Book) libraryItemObject;
+            return Objects.equals(title, book.title);
         }
-        if (o == null || getClass() != o.getClass()){
-            return false;
-        }
-        Book book = (Book) o;
-        return Objects.equals(title, book.title);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(title, author, publishedYear);
+        return false;
     }
 }
