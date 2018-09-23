@@ -8,9 +8,11 @@ import model.Library;
 import view.InputDriver;
 import view.OutputDriver;
 
+// Menu has set of operations that performs action on a library
 public enum Menu {
-    CHECKOUT_BOOK(new CheckoutBookCommand()),
+
     LIST_BOOKS(new ListBooksCommand()),
+    CHECKOUT_BOOK(new CheckoutBookCommand()),
     RETURN_BOOK(new ReturnBookCommand());
 
     private command command;
