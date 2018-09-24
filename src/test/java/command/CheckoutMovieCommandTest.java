@@ -17,7 +17,6 @@ class CheckoutMovieCommandTest {
     private Library library;
     private CheckoutMovieCommand checkoutMovieCommand;
     private LibraryActionListener librarian;
-    private LoginCommand loginCommand;
 
 
     @BeforeEach
@@ -27,24 +26,13 @@ class CheckoutMovieCommandTest {
         librarian = mock(LibraryActionListener.class);
         library = new LibraryHelper().createLibrary(librarian);
         checkoutMovieCommand = new CheckoutMovieCommand();
-        loginCommand = new LoginCommand();
-    }
-
-    private void getSuccessfulLoginVerifications() {
-        verify(outputDriver).print(Message.LOGIN_HEADER);
-        verify(outputDriver).print(Message.LOGIN_LIBRARY_NUMBER_HEADER);
-        verify(outputDriver).print(Message.LOGIN_PASSWORD_HEADER);
     }
 
     @DisplayName("Customer Should checked out the Movie Successfully")
     @Test
     void testForCheckOutTheMovieSuccessfully() {
 
-        when(inputDriver.getInputString()).thenReturn("").thenReturn("123-121510").thenReturn("bhavana");
-        loginCommand.act(outputDriver, inputDriver, library);
-
-        getSuccessfulLoginVerifications();
-        verify(outputDriver).print(Message.SUCCESSFULLY_LOGGED_IN);
+        library.authenticate("123-121510", "bhavana");
 
         when(inputDriver.getInputString()).thenReturn("").thenReturn("Avatar");
         checkoutMovieCommand.act(outputDriver, inputDriver, library);
@@ -60,11 +48,7 @@ class CheckoutMovieCommandTest {
     @Test
     void testForCheckOutTheMovieUnSuccessfully() {
 
-        when(inputDriver.getInputString()).thenReturn("").thenReturn("123-121510").thenReturn("bhavana");
-        loginCommand.act(outputDriver, inputDriver, library);
-
-        getSuccessfulLoginVerifications();
-        verify(outputDriver).print(Message.SUCCESSFULLY_LOGGED_IN);
+        library.authenticate("123-121510", "bhavana");
 
         when(inputDriver.getInputString()).thenReturn("").thenReturn("Harry");
         checkoutMovieCommand.act(outputDriver, inputDriver, library);
@@ -79,11 +63,7 @@ class CheckoutMovieCommandTest {
     @Test
     void testShouldReturnPleaseLoginMessageWhenUserTriesToCheckoutMovieWithOutLoggedIn() {
 
-        when(inputDriver.getInputString()).thenReturn("").thenReturn("123-433322").thenReturn("bhavana");
-        loginCommand.act(outputDriver, inputDriver, library);
-
-        getSuccessfulLoginVerifications();
-        verify(outputDriver).print(Message.UNSUCCESSFUL_LOGIN_MESSAGE);
+        library.authenticate("123-121510", "dfadf");
 
         checkoutMovieCommand.act(outputDriver, inputDriver, library);
 

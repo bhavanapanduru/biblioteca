@@ -15,11 +15,9 @@ class ReturnBookCommandTest {
 
     private OutputDriver outputDriver;
     private InputDriver inputDriver;
-    private CheckoutBookCommand checkoutBookCommand;
     private ReturnBookCommand returnBookCommand;
     private Library library;
     private LibraryActionListener librarian;
-    private LoginCommand loginCommand;
 
     @BeforeEach
     void init() {
@@ -27,34 +25,16 @@ class ReturnBookCommandTest {
         inputDriver = mock(InputDriver.class);
         librarian = mock(LibraryActionListener.class);
         library = new LibraryHelper().createLibrary(librarian);
-
-        checkoutBookCommand = new CheckoutBookCommand();
         returnBookCommand = new ReturnBookCommand();
-        loginCommand = new LoginCommand();
     }
 
     @DisplayName("Customer Should return the book Successfully")
     @Test
     void testForReturnTheBookSuccessfully() {
 
-        when(inputDriver.getInputString()).thenReturn("").thenReturn("123-121510").thenReturn("bhavana");
-        loginCommand.act(outputDriver, inputDriver, library);
+        library.authenticate("123-121510", "bhavana");
+        library.checkoutLibraryItem(new Book("Harry Potter", "", 0), LibraryItemType.BOOK);
 
-        verify(outputDriver).print(Message.LOGIN_HEADER);
-        verify(outputDriver).print(Message.LOGIN_LIBRARY_NUMBER_HEADER);
-        verify(outputDriver).print(Message.LOGIN_PASSWORD_HEADER);
-        verify(outputDriver).print(Message.SUCCESSFULLY_LOGGED_IN);
-
-        // These are for to checkoutLibraryItem book
-        when(inputDriver.getInputString()).thenReturn("").thenReturn("Harry Potter");
-        checkoutBookCommand.act(outputDriver, inputDriver, library);
-
-        verify(outputDriver).print(Message.CHECKOUT_BOOK_HEADER);
-        verify(outputDriver).print(Message.SUCCESSFUL_CHECKOUT_BOOK_MESSAGE);
-        verify(librarian).informWhenAnItemCheckedOut();
-        assertEquals(1, library.getLibraryItemDetails(LibraryItemType.BOOK).size());
-
-        // These are for to return book
         when(inputDriver.getInputString()).thenReturn("").thenReturn("Harry Potter");
         returnBookCommand.act(outputDriver, inputDriver, library);
 
@@ -67,13 +47,7 @@ class ReturnBookCommandTest {
     @Test
     void testForReturnTheBookUnSuccessfully() {
 
-        when(inputDriver.getInputString()).thenReturn("").thenReturn("123-121510").thenReturn("bhavana");
-        loginCommand.act(outputDriver, inputDriver, library);
-
-        verify(outputDriver).print(Message.LOGIN_HEADER);
-        verify(outputDriver).print(Message.LOGIN_LIBRARY_NUMBER_HEADER);
-        verify(outputDriver).print(Message.LOGIN_PASSWORD_HEADER);
-        verify(outputDriver).print(Message.SUCCESSFULLY_LOGGED_IN);
+        library.authenticate("123-121510", "bhavana");
 
         when(inputDriver.getInputString()).thenReturn("").thenReturn("Harry");
         returnBookCommand.act(outputDriver, inputDriver, library);
@@ -87,13 +61,7 @@ class ReturnBookCommandTest {
     @Test
     void testShouldReturnPleaseLoginMessageWhenUserTriesToReturnBookWithOutLoggedIn() {
 
-        when(inputDriver.getInputString()).thenReturn("").thenReturn("123-122342").thenReturn("bhavana");
-        loginCommand.act(outputDriver, inputDriver, library);
-
-        verify(outputDriver).print(Message.LOGIN_HEADER);
-        verify(outputDriver).print(Message.LOGIN_LIBRARY_NUMBER_HEADER);
-        verify(outputDriver).print(Message.LOGIN_PASSWORD_HEADER);
-        verify(outputDriver).print(Message.UNSUCCESSFUL_LOGIN_MESSAGE);
+        library.authenticate("123-121510", "34234");
 
         returnBookCommand.act(outputDriver, inputDriver, library);
 

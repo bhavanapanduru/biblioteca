@@ -17,7 +17,6 @@ class CheckoutBookCommandTest {
     private Library library;
     private LibraryActionListener librarian;
     private CheckoutBookCommand checkoutBookCommand;
-    private LoginCommand loginCommand;
 
     @BeforeEach
     void init() {
@@ -27,24 +26,13 @@ class CheckoutBookCommandTest {
 
         library = new LibraryHelper().createLibrary(librarian);
         checkoutBookCommand = new CheckoutBookCommand();
-        loginCommand = new LoginCommand();
-    }
-
-    private void getSuccessfulLoginTests() {
-        verify(outputDriver).print(Message.LOGIN_HEADER);
-        verify(outputDriver).print(Message.LOGIN_LIBRARY_NUMBER_HEADER);
-        verify(outputDriver).print(Message.LOGIN_PASSWORD_HEADER);
     }
 
     @DisplayName("Customer Should checked out the book Successfully")
     @Test
     void testForCheckOutTheBookSuccessfully() {
 
-        when(inputDriver.getInputString()).thenReturn("").thenReturn("123-121510").thenReturn("bhavana");
-        loginCommand.act(outputDriver, inputDriver, library);
-
-        getSuccessfulLoginTests();
-        verify(outputDriver).print(Message.SUCCESSFULLY_LOGGED_IN);
+        library.authenticate("123-121510", "bhavana");
 
         when(inputDriver.getInputString()).thenReturn("").thenReturn("Harry Potter");
         checkoutBookCommand.act(outputDriver, inputDriver, library);
@@ -60,11 +48,7 @@ class CheckoutBookCommandTest {
     @Test
     void testForCheckOutTheBookUnSuccessfully() {
 
-        when(inputDriver.getInputString()).thenReturn("").thenReturn("123-121510").thenReturn("bhavana");
-        loginCommand.act(outputDriver, inputDriver, library);
-
-        getSuccessfulLoginTests();
-        verify(outputDriver).print(Message.SUCCESSFULLY_LOGGED_IN);
+        library.authenticate("123-121510", "bhavana");
 
         when(inputDriver.getInputString()).thenReturn("").thenReturn("Harry");
         checkoutBookCommand.act(outputDriver, inputDriver, library);
@@ -79,11 +63,7 @@ class CheckoutBookCommandTest {
     @Test
     void testShouldReturnPleaseLoginMessageWhenUserTriesToCheckoutBookWithOutLoggedIn() {
 
-        when(inputDriver.getInputString()).thenReturn("").thenReturn("123-122112").thenReturn("bhavana");
-        loginCommand.act(outputDriver, inputDriver, library);
-
-        getSuccessfulLoginTests();
-        verify(outputDriver).print(Message.UNSUCCESSFUL_LOGIN_MESSAGE);
+        library.authenticate("123-112510", "bhavana");
 
         checkoutBookCommand.act(outputDriver, inputDriver, library);
 

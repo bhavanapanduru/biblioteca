@@ -43,6 +43,6 @@ public class Message {
     public static final String USER_INFO_COLUMN_DATA = "Name,Email Address,Phone Number";
     public static final String SINGLE_LINE = "---------------------------------------------------------------------------\n";
 
-    public static final String QUIT_MESSAGE = "\nQuit!";
+    public static final String QUIT_MESSAGE = "\nQuit! Have a Nice day!";
 
 }

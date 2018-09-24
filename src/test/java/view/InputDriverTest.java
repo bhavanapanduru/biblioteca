@@ -3,7 +3,6 @@ package view;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import view.InputDriver;
 
 import java.io.ByteArrayInputStream;
 

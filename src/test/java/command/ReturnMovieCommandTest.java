@@ -38,24 +38,9 @@ class ReturnMovieCommandTest {
     @Test
     void testForReturnTheMovieSuccessfully() {
 
-        when(inputDriver.getInputString()).thenReturn("").thenReturn("123-121510").thenReturn("bhavana");
-        loginCommand.act(outputDriver, inputDriver, library);
+        library.authenticate("123-121510", "bhavana");
+        library.checkoutLibraryItem(new Movie("Avatar", 0, "", ""), LibraryItemType.MOVIE);
 
-        verify(outputDriver).print(Message.LOGIN_HEADER);
-        verify(outputDriver).print(Message.LOGIN_LIBRARY_NUMBER_HEADER);
-        verify(outputDriver).print(Message.LOGIN_PASSWORD_HEADER);
-        verify(outputDriver).print(Message.SUCCESSFULLY_LOGGED_IN);
-
-        // These are for to checkoutLibraryItem book
-        when(inputDriver.getInputString()).thenReturn("").thenReturn("Avatar");
-        checkoutMovieCommand.act(outputDriver, inputDriver, library);
-
-        verify(outputDriver).print(Message.CHECKOUT_MOVIE_HEADER);
-        verify(outputDriver).print(Message.SUCCESSFUL_CHECKOUT_MOVIE_MESSAGE);
-        verify(librarian).informWhenAnItemCheckedOut();
-        assertEquals(3, library.getLibraryItemDetails(LibraryItemType.MOVIE).size());
-
-        // These are for to return book
         when(inputDriver.getInputString()).thenReturn("").thenReturn("Avatar");
         returnMovieCommand.act(outputDriver, inputDriver, library);
 
@@ -68,13 +53,7 @@ class ReturnMovieCommandTest {
     @Test
     void testForReturnTheMovieUnSuccessfully() {
 
-        when(inputDriver.getInputString()).thenReturn("").thenReturn("123-121510").thenReturn("bhavana");
-        loginCommand.act(outputDriver, inputDriver, library);
-
-        verify(outputDriver).print(Message.LOGIN_HEADER);
-        verify(outputDriver).print(Message.LOGIN_LIBRARY_NUMBER_HEADER);
-        verify(outputDriver).print(Message.LOGIN_PASSWORD_HEADER);
-        verify(outputDriver).print(Message.SUCCESSFULLY_LOGGED_IN);
+        library.authenticate("123-121510", "bhavana");
 
         when(inputDriver.getInputString()).thenReturn("").thenReturn("Harry");
         returnMovieCommand.act(outputDriver, inputDriver, library);
@@ -88,13 +67,7 @@ class ReturnMovieCommandTest {
     @Test
     void testShouldReturnPleaseLoginMessageWhenUserTriesToReturnBookWithOutLoggedIn() {
 
-        when(inputDriver.getInputString()).thenReturn("").thenReturn("123-123121").thenReturn("bhavana");
-        loginCommand.act(outputDriver, inputDriver, library);
-
-        verify(outputDriver).print(Message.LOGIN_HEADER);
-        verify(outputDriver).print(Message.LOGIN_LIBRARY_NUMBER_HEADER);
-        verify(outputDriver).print(Message.LOGIN_PASSWORD_HEADER);
-        verify(outputDriver).print(Message.UNSUCCESSFUL_LOGIN_MESSAGE);
+        library.authenticate("123-121510", "343242");
 
         returnMovieCommand.act(outputDriver, inputDriver, library);
 
