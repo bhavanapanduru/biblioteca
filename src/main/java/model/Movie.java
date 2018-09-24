@@ -27,7 +27,7 @@ public class Movie implements LibraryItem{
 
     public boolean compareItem(final LibraryItem libraryItemObject, final LibraryItemType libraryItemType) {
         if(libraryItemType == LibraryItemType.MOVIE) {
-            return equals(libraryItemObject);
+            return this.equals(libraryItemObject);
         }
         return false;
     }

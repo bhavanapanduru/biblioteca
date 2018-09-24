@@ -53,7 +53,7 @@ public class UserInformationCommandTest {
 
     }
 
-    @DisplayName("Should display please login! message to the user")
+    @DisplayName("Should display please authenticate! message to the user")
     @Test
     void testShouldReturnPleaseLoginMessageToTheUser() {
 

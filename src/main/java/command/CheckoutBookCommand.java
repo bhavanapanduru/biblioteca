@@ -16,9 +16,9 @@ public class CheckoutBookCommand implements Command {
             inputDriver.getInputString();   // Takes new Line
             String checkOutBookTitle = inputDriver.getInputString();
 
-            LibraryItem libraryItemObject = new Book(checkOutBookTitle, "", 0);
+            LibraryItem libraryItemToBeCheckOut = new Book(checkOutBookTitle, "", 0);
 
-            outputDriver.print(library.checkoutLibraryItem(libraryItemObject, LibraryItemType.BOOK)
+            outputDriver.print(library.checkoutLibraryItem(libraryItemToBeCheckOut, LibraryItemType.BOOK)
                     ? Message.SUCCESSFUL_CHECKOUT_BOOK_MESSAGE : Message.UNSUCCESSFUL_CHECKOUT_BOOK_MESSAGE);
 
         } else {

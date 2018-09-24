@@ -30,10 +30,10 @@ public class Library {
         return itemDetails;
     }
 
-    public boolean checkoutLibraryItem(final LibraryItem libraryItem, final LibraryItemType libraryItemType) {
+    public boolean checkoutLibraryItem(final LibraryItem libraryItemToBeCheckout, final LibraryItemType libraryItemType) {
 
         for (LibraryItem anAvailableItem : availableItems) {
-            if (anAvailableItem.compareItem(libraryItem, libraryItemType)) {
+            if (anAvailableItem.compareItem(libraryItemToBeCheckout, libraryItemType)) {
                 checkedOutItems.add(anAvailableItem);
                 availableItems.remove(anAvailableItem);
                 librarian.informWhenAnItemCheckedOut();
@@ -43,10 +43,10 @@ public class Library {
         return false;
     }
 
-    public boolean returnLibraryItem(final LibraryItem libraryItem, final LibraryItemType libraryItemType) {
+    public boolean returnLibraryItem(final LibraryItem libraryItemToBeReturn, final LibraryItemType libraryItemType) {
 
         for (LibraryItem checkedoutItem : checkedOutItems) {
-            if (checkedoutItem.compareItem(libraryItem, libraryItemType)) {
+            if (checkedoutItem.compareItem(libraryItemToBeReturn, libraryItemType)) {
                 checkedOutItems.remove(checkedoutItem);
                 availableItems.add(checkedoutItem);
                 return true;
@@ -59,10 +59,10 @@ public class Library {
         return currentUser != null;
     }
 
-    public boolean login(final String libraryNumber,final String password) {
+    public boolean authenticate(final String libraryNumber, final String password) {
 
         for(User user : users) {
-            currentUser = user.authenticate(libraryNumber, password) ? user : null;
+            currentUser = user.login(libraryNumber, password) ? user : null;
             if (currentUser != null) {
                 return true;
             }

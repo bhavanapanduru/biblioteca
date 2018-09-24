@@ -16,9 +16,9 @@ public class CheckoutMovieCommand implements Command {
             inputDriver.getInputString();   // Takes new Line
             String checkOutMovieTitle = inputDriver.getInputString();
 
-            LibraryItem libraryItemObject = new Movie(checkOutMovieTitle, 0, "", "");
+            LibraryItem libraryItemToBeCheckOut = new Movie(checkOutMovieTitle, 0, "", "");
 
-            outputDriver.print(library.checkoutLibraryItem(libraryItemObject, LibraryItemType.MOVIE)
+            outputDriver.print(library.checkoutLibraryItem(libraryItemToBeCheckOut, LibraryItemType.MOVIE)
                     ? Message.SUCCESSFUL_CHECKOUT_MOVIE_MESSAGE : Message.UNSUCCESSFUL_CHECKOUT_MOVIE_MESSAGE);
 
         } else {

@@ -18,7 +18,7 @@ class User {
         this.password = password;
     }
 
-    boolean authenticate(final String libraryNumber, final String password) {
+    public boolean login(final String libraryNumber, final String password) {
         return this.libraryNumber.equals(libraryNumber) && this.password.equals(password);
     }
 

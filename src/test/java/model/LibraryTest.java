@@ -116,13 +116,13 @@ class LibraryTest {
     @DisplayName("Expects true if you give right credentials of user")
     @Test
     void testShouldTrueIfYouGiveRightCredentials() {
-        assertTrue(library.login("123-121510", "bhavana"));
+        assertTrue(library.authenticate("123-121510", "bhavana"));
     }
 
     @DisplayName("Expects false if you give wrong credentials of user")
     @Test
     void testShouldFalseIfYouGiveWrongCredentials() {
-        assertFalse(library.login("123-121510", "bhana"));
+        assertFalse(library.authenticate("123-121510", "bhana"));
     }
 
     @DisplayName("Expects details of the current user")

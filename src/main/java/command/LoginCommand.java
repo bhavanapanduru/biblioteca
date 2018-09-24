@@ -5,7 +5,7 @@ import model.Message;
 import view.InputDriver;
 import view.OutputDriver;
 
-// LoginCommand is used to perform the action to login into the library
+// LoginCommand is used to perform the action to authenticate into the library
 public class LoginCommand implements Command {
     @Override
     public void act(OutputDriver outputDriver, InputDriver inputDriver, Library library) {
@@ -21,7 +21,7 @@ public class LoginCommand implements Command {
             outputDriver.print(Message.LOGIN_PASSWORD_HEADER);
             String password = inputDriver.getInputString();
 
-            outputDriver.print(library.login(libraryNumber, password) ?
+            outputDriver.print(library.authenticate(libraryNumber, password) ?
                     Message.SUCCESSFULLY_LOGGED_IN : Message.UNSUCCESSFUL_LOGIN_MESSAGE);
 
         } else {

@@ -22,22 +22,22 @@ public class Book implements LibraryItem{
         return "";
     }
 
-    public boolean compareItem(LibraryItem libraryItem, LibraryItemType libraryItemType) {
+    public boolean compareItem(LibraryItem libraryItemToBeCheckout, LibraryItemType libraryItemType) {
         if(libraryItemType == this.itemType) {
-            return equals(libraryItem);
+            return this.equals(libraryItemToBeCheckout);
         }
         return false;
     }
 
     @Override
-    public boolean equals(Object libraryItem){
-        if (this == libraryItem){
+    public boolean equals(Object libraryItemToBeCheckout){
+        if (this == libraryItemToBeCheckout){
             return true;
         }
-        if (libraryItem == null || getClass() != libraryItem.getClass()){
+        if (libraryItemToBeCheckout == null || getClass() != libraryItemToBeCheckout.getClass()){
             return false;
         }
-        Book book = (Book) libraryItem;
+        Book book = (Book) libraryItemToBeCheckout;
         return Objects.equals(title, book.title);
     }
 

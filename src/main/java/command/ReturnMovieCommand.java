@@ -15,9 +15,9 @@ public class ReturnMovieCommand implements Command {
             inputDriver.getInputString();   // Takes new Line
             String returnBookTitle = inputDriver.getInputString();
 
-            LibraryItem libraryItemObject = new Movie(returnBookTitle, 0, "","");
+            LibraryItem libraryItemToBeReturn = new Movie(returnBookTitle, 0, "","");
 
-            outputDriver.print(library.returnLibraryItem(libraryItemObject, LibraryItemType.MOVIE)
+            outputDriver.print(library.returnLibraryItem(libraryItemToBeReturn, LibraryItemType.MOVIE)
                     ? Message.SUCCESSFUL_RETURN_MOVIE_MESSAGE : Message.UNSUCCESSFUL_RETURN_MOVIE_MESSAGE);
 
         } else {

@@ -50,4 +50,16 @@ class BookTest {
         assertFalse(book.compareItem(libraryItemObject1, LibraryItemType.MOVIE));
     }
 
+    @DisplayName("Should expects true if two titles are equal")
+    @Test
+    void testShouldReturnTrueIfTwoTitlesAreEqual() {
+        assertTrue(book.equals(libraryItemObject1));
+    }
+
+    @DisplayName("Should expects false if two titles are not equal")
+    @Test
+    void testShouldReturnTrueIfTwoTitlesAreNotEqual() {
+        assertFalse(book.equals(libraryItemObject2));
+    }
+
 }

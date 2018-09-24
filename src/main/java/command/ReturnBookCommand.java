@@ -16,9 +16,9 @@ public class ReturnBookCommand implements Command {
             inputDriver.getInputString();   // Takes new Line
             String returnBookTitle = inputDriver.getInputString();
 
-            LibraryItem libraryItemObject = new Book(returnBookTitle, "", 0);
+            LibraryItem libraryItemToBeReturn = new Book(returnBookTitle, "", 0);
 
-            outputDriver.print(library.returnLibraryItem(libraryItemObject, LibraryItemType.BOOK)
+            outputDriver.print(library.returnLibraryItem(libraryItemToBeReturn, LibraryItemType.BOOK)
                     ? Message.SUCCESSFUL_RETURN_BOOK_MESSAGE : Message.UNSUCCESSFUL_RETURN_BOOK_MESSAGE);
 
         } else {

@@ -59,7 +59,7 @@ class LoginCommandTest {
 
     }
 
-    @DisplayName("Expects 'user already loggedin' message when user tries to login again")
+    @DisplayName("Expects 'user already loggedin' message when user tries to authenticate again")
     @Test
     void testShouldReturnUserAlreadyLoggedInMessageWhenUserAgainTriesToLogIn() {
 

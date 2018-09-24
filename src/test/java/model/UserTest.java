@@ -22,13 +22,13 @@ class UserTest {
     @DisplayName("should expects true if a object credentials are equal with user given credentials")
     @Test
     void testShouldReturnTrueIfCredentailsAreEqual() {
-        assertTrue(user1.authenticate("123-121510", "bhavana"));
+        assertTrue(user1.login("123-121510", "bhavana"));
     }
 
     @DisplayName("should expects false if a object credentials are not equal with user given credentials")
     @Test
     void testShouldReturnFalseIfCredentailsAreNotEqual() {
-        assertFalse(user2.authenticate("123-121510", "bhavana"));
+        assertFalse(user2.login("123-121510", "bhavana"));
     }
 
     @DisplayName("should return correct name, email address and phone number")
