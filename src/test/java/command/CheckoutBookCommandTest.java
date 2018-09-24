@@ -10,7 +10,7 @@ import view.OutputDriver;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
-class CheckoutBookCommandTest{
+class CheckoutBookCommandTest {
 
     private OutputDriver outputDriver;
     private InputDriver inputDriver;
@@ -30,6 +30,11 @@ class CheckoutBookCommandTest{
         loginCommand = new LoginCommand();
     }
 
+    private void getSuccessfulLoginTests() {
+        verify(outputDriver).print(Message.LOGIN_HEADER);
+        verify(outputDriver).print(Message.LOGIN_LIBRARY_NUMBER_HEADER);
+        verify(outputDriver).print(Message.LOGIN_PASSWORD_HEADER);
+    }
 
     @DisplayName("Customer Should checked out the book Successfully")
     @Test
@@ -38,9 +43,7 @@ class CheckoutBookCommandTest{
         when(inputDriver.getInputString()).thenReturn("").thenReturn("123-121510").thenReturn("bhavana");
         loginCommand.act(outputDriver, inputDriver, library);
 
-        verify(outputDriver).print(Message.LOGIN_HEADER);
-        verify(outputDriver).print(Message.LOGIN_LIBRARY_NUMBER_HEADER);
-        verify(outputDriver).print(Message.LOGIN_PASSWORD_HEADER);
+        getSuccessfulLoginTests();
         verify(outputDriver).print(Message.SUCCESSFULLY_LOGGED_IN);
 
         when(inputDriver.getInputString()).thenReturn("").thenReturn("Harry Potter");
@@ -60,9 +63,7 @@ class CheckoutBookCommandTest{
         when(inputDriver.getInputString()).thenReturn("").thenReturn("123-121510").thenReturn("bhavana");
         loginCommand.act(outputDriver, inputDriver, library);
 
-        verify(outputDriver).print(Message.LOGIN_HEADER);
-        verify(outputDriver).print(Message.LOGIN_LIBRARY_NUMBER_HEADER);
-        verify(outputDriver).print(Message.LOGIN_PASSWORD_HEADER);
+        getSuccessfulLoginTests();
         verify(outputDriver).print(Message.SUCCESSFULLY_LOGGED_IN);
 
         when(inputDriver.getInputString()).thenReturn("").thenReturn("Harry");
@@ -81,9 +82,7 @@ class CheckoutBookCommandTest{
         when(inputDriver.getInputString()).thenReturn("").thenReturn("123-122112").thenReturn("bhavana");
         loginCommand.act(outputDriver, inputDriver, library);
 
-        verify(outputDriver).print(Message.LOGIN_HEADER);
-        verify(outputDriver).print(Message.LOGIN_LIBRARY_NUMBER_HEADER);
-        verify(outputDriver).print(Message.LOGIN_PASSWORD_HEADER);
+        getSuccessfulLoginTests();
         verify(outputDriver).print(Message.UNSUCCESSFUL_LOGIN_MESSAGE);
 
         checkoutBookCommand.act(outputDriver, inputDriver, library);

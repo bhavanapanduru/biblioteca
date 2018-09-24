@@ -15,6 +15,7 @@ public class LibraryManagementSystem {
     private final OutputDriver outputDriver;
     private final InputDriver inputDriver;
     private final Library library;
+    private final int quitOption = 9;
 
     private List<String> menuList;
     private HashMap<Integer, String> userChoicesToMenu;
@@ -35,13 +36,13 @@ public class LibraryManagementSystem {
 
     private void doMenuOperation() {
 
-        printMenu();
         initializeUserChoicesToMenu();
+        int userChoice;
 
-        int userChoice = inputDriver.getInput();
-        int quitIndex = 9;
+        do{
+            printMenu();
 
-        while (userChoice != quitIndex) {
+            userChoice = inputDriver.getInput();
 
             if (userChoicesToMenu.containsKey(userChoice)) {
                 Menu.valueOf(userChoicesToMenu.get(userChoice)).act(outputDriver, inputDriver, library);
@@ -49,9 +50,7 @@ public class LibraryManagementSystem {
                 outputDriver.print(Message.INVALID_CHOICE_MESSAGE);
             }
 
-            printMenu();
-            userChoice = inputDriver.getInput();
-        }
+        }while(userChoice != quitOption);
 
     }
 
@@ -71,6 +70,7 @@ public class LibraryManagementSystem {
         userChoicesToMenu.put(6, "RETURN_MOVIE");
         userChoicesToMenu.put(7, "LOGIN");
         userChoicesToMenu.put(8, "USER_INFORMATION");
+        userChoicesToMenu.put(9, "QUIT");
     }
 
     public LibraryManagementSystem initializeMenu() {

@@ -24,7 +24,7 @@ public class LibraryHelper {
 
     private Collection<? extends User> createUsers() {
 
-        List<User> users = new ArrayList<>();
+        final List<User> users = new ArrayList<>();
 
         users.add(new User("Bhavana", "bhavana.p@thoughtworks.com", "8985322285", "123-121510", "bhavana"));
         users.add(new User("Anju", "anju.g@oracle.com", "8333960577", "123-121451", "anju"));

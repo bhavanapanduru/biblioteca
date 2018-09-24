@@ -10,7 +10,7 @@ import view.OutputDriver;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
-public class LibraryTest {
+class LibraryTest {
 
     private Library library;
     private LibraryItem libraryItemBook1;
@@ -26,7 +26,6 @@ public class LibraryTest {
 
     @BeforeEach
     void init() {
-
 
         outputDriver = mock(OutputDriver.class);
         inputDriver = mock(InputDriver.class);

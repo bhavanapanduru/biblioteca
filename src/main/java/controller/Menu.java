@@ -15,15 +15,16 @@ public enum Menu {
     CHECKOUT_MOVIE(new CheckoutMovieCommand()),
     RETURN_MOVIE(new ReturnMovieCommand()),
     LOGIN(new LoginCommand()),
-    USER_INFORMATION(new UserInformationCommand());
+    USER_INFORMATION(new UserInformationCommand()),
+    QUIT(new QuitCommand());
 
-    private command command;
+    private Command command;
 
-    Menu(command command) {
+    Menu(Command command) {
         this.command = command;
     }
 
-    public void act(OutputDriver outputDriver, InputDriver inputDriver, Library library) {
+    public void act(final OutputDriver outputDriver, final InputDriver inputDriver, final Library library) {
         this.command.act(outputDriver, inputDriver, library);
     }
 

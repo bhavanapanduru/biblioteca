@@ -5,11 +5,11 @@ import view.InputDriver;
 import view.OutputDriver;
 
 // ReturnMovieCommand is used to perform the action that is return the movie to the library
-public class ReturnMovieCommand implements command {
+public class ReturnMovieCommand implements Command {
     @Override
     public void act(OutputDriver outputDriver, InputDriver inputDriver, Library library) {
 
-        if (library.userLoggedIn()) {
+        if (library.IsUserLoggedIn()) {
 
             outputDriver.print(Message.RETURN_MOVIE_HEADER);
             inputDriver.getInputString();   // Takes new Line

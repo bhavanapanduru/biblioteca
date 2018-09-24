@@ -9,7 +9,7 @@ public class Book implements LibraryItem{
     private final int publishedYear;
     private final LibraryItemType itemType = LibraryItemType.BOOK;
 
-    public Book(String title, String author, int publishedYear) {
+    public Book(final String title, final String author, final int publishedYear) {
         this.title = title;
         this.author = author;
         this.publishedYear = publishedYear;
@@ -22,17 +22,24 @@ public class Book implements LibraryItem{
         return "";
     }
 
-    public boolean compareItem(LibraryItem libraryItemObject, LibraryItemType libraryItemType) {
-        if(libraryItemType == LibraryItemType.BOOK) {
-            if (this == libraryItemObject){
-                return true;
-            }
-            if (libraryItemObject == null || getClass() != libraryItemObject.getClass()){
-                return false;
-            }
-            Book book = (Book) libraryItemObject;
-            return Objects.equals(title, book.title);
+    public boolean compareItem(LibraryItem libraryItem, LibraryItemType libraryItemType) {
+        if(libraryItemType == this.itemType) {
+            return equals(libraryItem);
         }
         return false;
     }
+
+    @Override
+    public boolean equals(Object libraryItem){
+        if (this == libraryItem){
+            return true;
+        }
+        if (libraryItem == null || getClass() != libraryItem.getClass()){
+            return false;
+        }
+        Book book = (Book) libraryItem;
+        return Objects.equals(title, book.title);
+    }
+
+
 }

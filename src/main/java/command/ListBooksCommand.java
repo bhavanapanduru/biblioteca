@@ -7,7 +7,7 @@ import view.InputDriver;
 import view.OutputDriver;
 
 // ListBooksCommand is used to perform the action to list books of the library
-public class ListBooksCommand implements command {
+public class ListBooksCommand implements Command {
 
     @Override
     public void act(OutputDriver outputDriver, InputDriver inputDriver, Library library) {

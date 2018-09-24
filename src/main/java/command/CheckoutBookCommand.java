@@ -5,12 +5,12 @@ import view.InputDriver;
 import view.OutputDriver;
 
 // CheckoutBookCommand is used to perform the action to check out the book from the library
-public class CheckoutBookCommand implements command {
+public class CheckoutBookCommand implements Command {
 
     @Override
     public void act(OutputDriver outputDriver, InputDriver inputDriver, Library library) {
 
-        if (library.userLoggedIn()) {
+        if (library.IsUserLoggedIn()) {
 
             outputDriver.print(Message.CHECKOUT_BOOK_HEADER);
             inputDriver.getInputString();   // Takes new Line

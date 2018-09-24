@@ -20,14 +20,13 @@ class MenuTest {
     private OutputDriver outputDriver;
     private InputDriver inputDriver;
     private Library library;
-    private LibraryActionListener librarian;
     private LoginCommand loginCommand;
 
     @BeforeEach
     void init() {
         outputDriver = mock(OutputDriver.class);
         inputDriver = mock(InputDriver.class);
-        librarian = mock(LibraryActionListener.class);
+        LibraryActionListener librarian = mock(LibraryActionListener.class);
         loginCommand = new LoginCommand();
         library = new LibraryHelper().createLibrary(librarian);
     }
@@ -35,14 +34,14 @@ class MenuTest {
     @DisplayName("Should call act method in listBooksCommand class")
     @Test
     void testShouldCallActMethodInListBooksCommandClass() {
-        Menu.valueOf("LIST_BOOKS").act(outputDriver,inputDriver,library);
+        Menu.valueOf("LIST_BOOKS").act(outputDriver, inputDriver, library);
         verify(outputDriver).print(Message.LIST_BOOKS_HEAD_LINE);
     }
 
     @DisplayName("Should call act method in listMoviesCommand class")
     @Test
     void testShouldCallActMethodInListMoviesCommandClass() {
-        Menu.valueOf("LIST_MOVIES").act(outputDriver,inputDriver,library);
+        Menu.valueOf("LIST_MOVIES").act(outputDriver, inputDriver, library);
         verify(outputDriver).print(Message.LIST_MOVIES_HEAD_LINE);
     }
 
@@ -50,7 +49,7 @@ class MenuTest {
     @Test
     void testShouldCallActMethodInCheckoutBookCommandClass() {
         testShouldCheckSuccessfulLogin();
-        Menu.valueOf("CHECKOUT_BOOK").act(outputDriver,inputDriver,library);
+        Menu.valueOf("CHECKOUT_BOOK").act(outputDriver, inputDriver, library);
 
         verify(outputDriver).print(Message.CHECKOUT_BOOK_HEADER);
     }
@@ -59,7 +58,7 @@ class MenuTest {
     @Test
     void testShouldCallActMethodInCheckoutMovieCommandClass() {
         testShouldCheckSuccessfulLogin();
-        Menu.valueOf("CHECKOUT_MOVIE").act(outputDriver,inputDriver,library);
+        Menu.valueOf("CHECKOUT_MOVIE").act(outputDriver, inputDriver, library);
 
         verify(outputDriver).print(Message.CHECKOUT_MOVIE_HEADER);
     }
@@ -68,7 +67,7 @@ class MenuTest {
     @Test
     void testShouldCallActMethodInReturnBookCommandClass() {
         testShouldCheckSuccessfulLogin();
-        Menu.valueOf("RETURN_BOOK").act(outputDriver,inputDriver,library);
+        Menu.valueOf("RETURN_BOOK").act(outputDriver, inputDriver, library);
 
         verify(outputDriver).print(Message.RETURN_BOOK_HEADER);
     }
@@ -77,9 +76,26 @@ class MenuTest {
     @Test
     void testShouldCallActMethodInReturnMovieCommandClass() {
         testShouldCheckSuccessfulLogin();
-        Menu.valueOf("RETURN_MOVIE").act(outputDriver,inputDriver,library);
+        Menu.valueOf("RETURN_MOVIE").act(outputDriver, inputDriver, library);
 
         verify(outputDriver).print(Message.RETURN_MOVIE_HEADER);
+    }
+
+    @DisplayName("Should call act method in LoginCommand class")
+    @Test
+    void testShouldCallActMethodInLoginCommandClass() {
+        Menu.valueOf("LOGIN").act(outputDriver, inputDriver, library);
+
+        verify(outputDriver).print(Message.LOGIN_HEADER);
+    }
+
+    @DisplayName("Should call act method in UserInformationCommand class")
+    @Test
+    void testShouldCallActMethodInUserInformationCommandClass() {
+        testShouldCheckSuccessfulLogin();
+        Menu.valueOf("USER_INFORMATION").act(outputDriver, inputDriver, library);
+
+        verify(outputDriver).print(Message.USER_INFORMATION_HEADER);
     }
 
     @DisplayName("expects successful Login")

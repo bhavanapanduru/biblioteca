@@ -6,12 +6,12 @@ import view.InputDriver;
 import view.OutputDriver;
 
 // UserInformationCommand is used to display the user details of the library.
-public class UserInformationCommand implements command {
+public class UserInformationCommand implements Command {
 
     @Override
     public void act(OutputDriver outputDriver, InputDriver inputDriver, Library library) {
 
-        if (library.userLoggedIn()) {
+        if (library.IsUserLoggedIn()) {
 
             outputDriver.print(Message.USER_INFORMATION_HEADER);
             outputDriver.printTextWithColumnWise(Message.USER_INFO_COLUMN_DATA);

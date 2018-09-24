@@ -27,16 +27,21 @@ public class Movie implements LibraryItem{
 
     public boolean compareItem(final LibraryItem libraryItemObject, final LibraryItemType libraryItemType) {
         if(libraryItemType == LibraryItemType.MOVIE) {
-            if (this == libraryItemObject){
-                return true;
-            }
-            if (libraryItemObject == null || getClass() != libraryItemObject.getClass()){
-                return false;
-            }
-            Movie movie = (Movie) libraryItemObject;
-            return Objects.equals(this.name, movie.name);
+            return equals(libraryItemObject);
         }
         return false;
+    }
+
+    @Override
+    public boolean equals(Object libraryItemObject) {
+        if (this == libraryItemObject){
+            return true;
+        }
+        if (libraryItemObject == null || getClass() != libraryItemObject.getClass()){
+            return false;
+        }
+        Movie movie = (Movie) libraryItemObject;
+        return Objects.equals(this.name, movie.name);
     }
 
 }

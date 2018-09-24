@@ -34,6 +34,18 @@ class LibraryManagementSystemTest {
         libraryManagementSystem = new LibraryManagementSystem(outputDriver, inputDriver, library).initializeMenu();
     }
 
+    private void getDisplayMenuVerifications() {
+        verify(outputDriver, times(2)).print("1) List Books");
+        verify(outputDriver, times(2)).print("2) Checkout Book");
+        verify(outputDriver, times(2)).print("3) Return Book");
+        verify(outputDriver, times(2)).print("4) List Movies");
+        verify(outputDriver, times(2)).print("5) Checkout Movie");
+        verify(outputDriver, times(2)).print("6) Return Movie");
+        verify(outputDriver, times(2)).print("7) Login");
+        verify(outputDriver, times(2)).print("8) User Information");
+        verify(outputDriver, times(2)).print("9) Quit");
+    }
+
     @DisplayName("Should print the welcome message")
     @Test
     void testShouldPrintWelcomeMessage() {
@@ -61,15 +73,7 @@ class LibraryManagementSystemTest {
         libraryManagementSystem.displayMenu();
 
         verify(outputDriver, times(2)).print(Message.MENU_HEAD_LINE);
-        verify(outputDriver, times(2)).print("1) List Books");
-        verify(outputDriver, times(2)).print("2) Checkout Book");
-        verify(outputDriver, times(2)).print("3) Return Book");
-        verify(outputDriver, times(2)).print("4) List Movies");
-        verify(outputDriver, times(2)).print("5) Checkout Movie");
-        verify(outputDriver, times(2)).print("6) Return Movie");
-        verify(outputDriver, times(2)).print("7) Login");
-        verify(outputDriver, times(2)).print("8) User Information");
-        verify(outputDriver, times(2)).print("9) Quit");
+        getDisplayMenuVerifications();
         verify(outputDriver, times(2)).print(Message.USER_CHOICE);
         verify(outputDriver).print(Message.LIST_BOOKS_HEAD_LINE);
     }
@@ -81,14 +85,7 @@ class LibraryManagementSystemTest {
         libraryManagementSystem.displayMenu();
 
         verify(outputDriver, times(2)).print(Message.MENU_HEAD_LINE);
-        verify(outputDriver, times(2)).print("1) List Books");
-        verify(outputDriver, times(2)).print("2) Checkout Book");
-        verify(outputDriver, times(2)).print("3) Return Book");
-        verify(outputDriver, times(2)).print("4) List Movies");
-        verify(outputDriver, times(2)).print("5) Checkout Movie");
-        verify(outputDriver, times(2)).print("6) Return Movie");
-        verify(outputDriver, times(2)).print("8) User Information");
-        verify(outputDriver, times(2)).print("9) Quit");
+        getDisplayMenuVerifications();
         verify(outputDriver, times(2)).print(Message.USER_CHOICE);
         verify(outputDriver).print(Message.LIST_MOVIES_HEAD_LINE);
     }
@@ -100,14 +97,7 @@ class LibraryManagementSystemTest {
         libraryManagementSystem.displayMenu();
 
         verify(outputDriver, times(2)).print(Message.MENU_HEAD_LINE);
-        verify(outputDriver, times(2)).print("1) List Books");
-        verify(outputDriver, times(2)).print("2) Checkout Book");
-        verify(outputDriver, times(2)).print("3) Return Book");
-        verify(outputDriver, times(2)).print("4) List Movies");
-        verify(outputDriver, times(2)).print("5) Checkout Movie");
-        verify(outputDriver, times(2)).print("6) Return Movie");
-        verify(outputDriver, times(2)).print("8) User Information");
-        verify(outputDriver, times(2)).print("9) Quit");
+        getDisplayMenuVerifications();
         verify(outputDriver, times(2)).print(Message.USER_CHOICE);
         verify(outputDriver).print(Message.INVALID_CHOICE_MESSAGE);
     }
@@ -122,14 +112,7 @@ class LibraryManagementSystemTest {
         libraryManagementSystem.displayMenu();
 
         verify(outputDriver, times(2)).print(Message.MENU_HEAD_LINE);
-        verify(outputDriver, times(2)).print("1) List Books");
-        verify(outputDriver, times(2)).print("2) Checkout Book");
-        verify(outputDriver, times(2)).print("3) Return Book");
-        verify(outputDriver, times(2)).print("4) List Movies");
-        verify(outputDriver, times(2)).print("5) Checkout Movie");
-        verify(outputDriver, times(2)).print("6) Return Movie");
-        verify(outputDriver, times(2)).print("8) User Information");
-        verify(outputDriver, times(2)).print("9) Quit");
+        getDisplayMenuVerifications();
         verify(outputDriver, times(2)).print(Message.USER_CHOICE);
         verify(outputDriver).print(Message.CHECKOUT_BOOK_HEADER);
     }
@@ -144,14 +127,7 @@ class LibraryManagementSystemTest {
         libraryManagementSystem.displayMenu();
 
         verify(outputDriver, times(2)).print(Message.MENU_HEAD_LINE);
-        verify(outputDriver, times(2)).print("1) List Books");
-        verify(outputDriver, times(2)).print("2) Checkout Book");
-        verify(outputDriver, times(2)).print("3) Return Book");
-        verify(outputDriver, times(2)).print("4) List Movies");
-        verify(outputDriver, times(2)).print("5) Checkout Movie");
-        verify(outputDriver, times(2)).print("6) Return Movie");
-        verify(outputDriver, times(2)).print("8) User Information");
-        verify(outputDriver, times(2)).print("9) Quit");
+        getDisplayMenuVerifications();
         verify(outputDriver, times(2)).print(Message.USER_CHOICE);
         verify(outputDriver).print(Message.CHECKOUT_MOVIE_HEADER);
     }
@@ -166,14 +142,7 @@ class LibraryManagementSystemTest {
         libraryManagementSystem.displayMenu();
 
         verify(outputDriver, times(2)).print(Message.MENU_HEAD_LINE);
-        verify(outputDriver, times(2)).print("1) List Books");
-        verify(outputDriver, times(2)).print("2) Checkout Book");
-        verify(outputDriver, times(2)).print("3) Return Book");
-        verify(outputDriver, times(2)).print("4) List Movies");
-        verify(outputDriver, times(2)).print("5) Checkout Movie");
-        verify(outputDriver, times(2)).print("6) Return Movie");
-        verify(outputDriver, times(2)).print("8) User Information");
-        verify(outputDriver, times(2)).print("9) Quit");
+        getDisplayMenuVerifications();
         verify(outputDriver, times(2)).print(Message.USER_CHOICE);
         verify(outputDriver).print(Message.RETURN_BOOK_HEADER);
     }
@@ -188,14 +157,7 @@ class LibraryManagementSystemTest {
         libraryManagementSystem.displayMenu();
 
         verify(outputDriver, times(2)).print(Message.MENU_HEAD_LINE);
-        verify(outputDriver, times(2)).print("1) List Books");
-        verify(outputDriver, times(2)).print("2) Checkout Book");
-        verify(outputDriver, times(2)).print("3) Return Book");
-        verify(outputDriver, times(2)).print("4) List Movies");
-        verify(outputDriver, times(2)).print("5) Checkout Movie");
-        verify(outputDriver, times(2)).print("6) Return Movie");
-        verify(outputDriver, times(2)).print("8) User Information");
-        verify(outputDriver, times(2)).print("9) Quit");
+        getDisplayMenuVerifications();
         verify(outputDriver, times(2)).print(Message.USER_CHOICE);
         verify(outputDriver).print(Message.RETURN_MOVIE_HEADER);
     }
@@ -213,6 +175,7 @@ class LibraryManagementSystemTest {
         verify(outputDriver).print("4) List Movies");
         verify(outputDriver).print("5) Checkout Movie");
         verify(outputDriver).print("6) Return Movie");
+        verify(outputDriver).print("7) Login");
         verify(outputDriver).print("8) User Information");
         verify(outputDriver).print("9) Quit");
         verify(outputDriver).print(Message.USER_CHOICE);

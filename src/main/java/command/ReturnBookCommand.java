@@ -5,12 +5,12 @@ import view.InputDriver;
 import view.OutputDriver;
 
 // ReturnBookCommand is used to perform the action that is return the book to the library
-public class ReturnBookCommand implements command {
+public class ReturnBookCommand implements Command {
 
     @Override
     public void act(OutputDriver outputDriver, InputDriver inputDriver, Library library) {
 
-        if (library.userLoggedIn()) {
+        if (library.IsUserLoggedIn()) {
 
             outputDriver.print(Message.RETURN_BOOK_HEADER);
             inputDriver.getInputString();   // Takes new Line

@@ -6,7 +6,7 @@ import java.util.List;
 // BookHelper is used to create books for the library
 class BookHelper {
 
-    private List<LibraryItem> books;
+    private final List<LibraryItem> books;
 
     BookHelper() {
 

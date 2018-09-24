@@ -6,11 +6,11 @@ import view.OutputDriver;
 import model.Movie;
 
 // CheckoutMovieCommand is used to perform the action to check out the movie from the library
-public class CheckoutMovieCommand implements command {
+public class CheckoutMovieCommand implements Command {
     @Override
     public void act(OutputDriver outputDriver, InputDriver inputDriver, Library library) {
 
-        if (library.userLoggedIn()) {
+        if (library.IsUserLoggedIn()) {
 
             outputDriver.print(Message.CHECKOUT_MOVIE_HEADER);
             inputDriver.getInputString();   // Takes new Line

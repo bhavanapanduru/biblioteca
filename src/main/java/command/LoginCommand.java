@@ -6,11 +6,11 @@ import view.InputDriver;
 import view.OutputDriver;
 
 // LoginCommand is used to perform the action to login into the library
-public class LoginCommand implements command {
+public class LoginCommand implements Command {
     @Override
     public void act(OutputDriver outputDriver, InputDriver inputDriver, Library library) {
 
-        if(!library.userLoggedIn()) {
+        if(!library.IsUserLoggedIn()) {
 
             outputDriver.print(Message.LOGIN_HEADER);
 

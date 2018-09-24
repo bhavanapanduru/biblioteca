@@ -30,6 +30,12 @@ class CheckoutMovieCommandTest {
         loginCommand = new LoginCommand();
     }
 
+    private void getSuccessfulLoginVerifications() {
+        verify(outputDriver).print(Message.LOGIN_HEADER);
+        verify(outputDriver).print(Message.LOGIN_LIBRARY_NUMBER_HEADER);
+        verify(outputDriver).print(Message.LOGIN_PASSWORD_HEADER);
+    }
+
     @DisplayName("Customer Should checked out the Movie Successfully")
     @Test
     void testForCheckOutTheMovieSuccessfully() {
@@ -37,9 +43,7 @@ class CheckoutMovieCommandTest {
         when(inputDriver.getInputString()).thenReturn("").thenReturn("123-121510").thenReturn("bhavana");
         loginCommand.act(outputDriver, inputDriver, library);
 
-        verify(outputDriver).print(Message.LOGIN_HEADER);
-        verify(outputDriver).print(Message.LOGIN_LIBRARY_NUMBER_HEADER);
-        verify(outputDriver).print(Message.LOGIN_PASSWORD_HEADER);
+        getSuccessfulLoginVerifications();
         verify(outputDriver).print(Message.SUCCESSFULLY_LOGGED_IN);
 
         when(inputDriver.getInputString()).thenReturn("").thenReturn("Avatar");
@@ -59,9 +63,7 @@ class CheckoutMovieCommandTest {
         when(inputDriver.getInputString()).thenReturn("").thenReturn("123-121510").thenReturn("bhavana");
         loginCommand.act(outputDriver, inputDriver, library);
 
-        verify(outputDriver).print(Message.LOGIN_HEADER);
-        verify(outputDriver).print(Message.LOGIN_LIBRARY_NUMBER_HEADER);
-        verify(outputDriver).print(Message.LOGIN_PASSWORD_HEADER);
+        getSuccessfulLoginVerifications();
         verify(outputDriver).print(Message.SUCCESSFULLY_LOGGED_IN);
 
         when(inputDriver.getInputString()).thenReturn("").thenReturn("Harry");
@@ -80,9 +82,7 @@ class CheckoutMovieCommandTest {
         when(inputDriver.getInputString()).thenReturn("").thenReturn("123-433322").thenReturn("bhavana");
         loginCommand.act(outputDriver, inputDriver, library);
 
-        verify(outputDriver).print(Message.LOGIN_HEADER);
-        verify(outputDriver).print(Message.LOGIN_LIBRARY_NUMBER_HEADER);
-        verify(outputDriver).print(Message.LOGIN_PASSWORD_HEADER);
+        getSuccessfulLoginVerifications();
         verify(outputDriver).print(Message.UNSUCCESSFUL_LOGIN_MESSAGE);
 
         checkoutMovieCommand.act(outputDriver, inputDriver, library);
