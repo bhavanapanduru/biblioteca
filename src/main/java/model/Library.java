@@ -77,7 +77,7 @@ public class Library {
         return "";
     }
 
-    public boolean unauthenticated() {
+    public boolean unauthenticateUser() {
         currentUser = currentUser.logout();
         return currentUser == null;
     }
