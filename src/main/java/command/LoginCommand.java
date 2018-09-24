@@ -10,7 +10,7 @@ public class LoginCommand implements Command {
     @Override
     public void act(OutputDriver outputDriver, InputDriver inputDriver, Library library) {
 
-        if(!library.IsUserLoggedIn()) {
+        if (!library.isUserLoggedIn()) {
 
             outputDriver.print(Message.LOGIN_HEADER);
 

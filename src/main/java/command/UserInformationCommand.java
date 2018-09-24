@@ -11,7 +11,7 @@ public class UserInformationCommand implements Command {
     @Override
     public void act(OutputDriver outputDriver, InputDriver inputDriver, Library library) {
 
-        if (library.IsUserLoggedIn()) {
+        if (library.isUserLoggedIn()) {
 
             outputDriver.print(Message.USER_INFORMATION_HEADER);
             outputDriver.printTextWithColumnWise(Message.USER_INFO_COLUMN_DATA);

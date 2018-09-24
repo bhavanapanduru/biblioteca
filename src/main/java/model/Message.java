@@ -36,7 +36,7 @@ public class Message {
     public static final String SUCCESSFULLY_LOGGED_IN = "\nSuccessfully LoggedIn!\n";
     public static final String UNSUCCESSFUL_LOGIN_MESSAGE = "\nLogIn Failed! Please Try Again:\n";
 
-    public static final String USER_ALREADY_LOGGED_IN = "User already LoggedIn!\n";
+    public static final String USER_ALREADY_LOGGED_IN = "\nUser already LoggedIn!";
     public static final String PLEASE_LOGIN = "\nPlease Login!\n";
 
     public static final String USER_INFORMATION_HEADER = "\n------------------------- \nUser Details are : \n";
@@ -44,8 +44,5 @@ public class Message {
     public static final String SINGLE_LINE = "---------------------------------------------------------------------------\n";
 
     public static final String QUIT_MESSAGE = "Quit!\n";
-
-
-
 
 }

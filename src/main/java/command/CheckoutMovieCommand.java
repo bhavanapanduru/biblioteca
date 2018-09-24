@@ -10,7 +10,7 @@ public class CheckoutMovieCommand implements Command {
     @Override
     public void act(OutputDriver outputDriver, InputDriver inputDriver, Library library) {
 
-        if (library.IsUserLoggedIn()) {
+        if (library.isUserLoggedIn()) {
 
             outputDriver.print(Message.CHECKOUT_MOVIE_HEADER);
             inputDriver.getInputString();   // Takes new Line

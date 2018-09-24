@@ -40,6 +40,16 @@ class LibraryTest {
         libraryItemMovie2 = new Movie("Haha", 1889, "James ", "10");
     }
 
+    private void getSuccessfulLoginVerifications() {
+        when(inputDriver.getInputString()).thenReturn("").thenReturn("123-121512").thenReturn("sindhu");
+        loginCommand.act(outputDriver, inputDriver, library);
+
+        verify(outputDriver).print(Message.LOGIN_HEADER);
+        verify(outputDriver).print(Message.LOGIN_LIBRARY_NUMBER_HEADER);
+        verify(outputDriver).print(Message.LOGIN_PASSWORD_HEADER);
+        verify(outputDriver).print(Message.SUCCESSFULLY_LOGGED_IN);
+    }
+
     @DisplayName("Should return details of all the books")
     @Test
     void testShouldReturnAllBookTitles() {
@@ -128,16 +138,21 @@ class LibraryTest {
     @DisplayName("Expects details of the current user")
     @Test
     void testShouldReturnDetailsOfTheCurrentUser() {
+        getSuccessfulLoginVerifications();
+        assertEquals("Sindhu,sindhu@thoughtworks.com,8888899999", library.getUserInformation());
+    }
 
-        when(inputDriver.getInputString()).thenReturn("").thenReturn("123-121510").thenReturn("bhavana");
-        loginCommand.act(outputDriver, inputDriver, library);
+    @DisplayName("Should expects true if current user is exists in library")
+    @Test
+    void testShouldReturnTrueIfCurrentUserExists() {
+        getSuccessfulLoginVerifications();
+        assertTrue(library.isUserLoggedIn());
+    }
 
-        verify(outputDriver).print(Message.LOGIN_HEADER);
-        verify(outputDriver).print(Message.LOGIN_LIBRARY_NUMBER_HEADER);
-        verify(outputDriver).print(Message.LOGIN_PASSWORD_HEADER);
-        verify(outputDriver).print(Message.SUCCESSFULLY_LOGGED_IN);
-
-        assertEquals("Bhavana,bhavana.p@thoughtworks.com,8985322285", library.getUserInformation());
+    @DisplayName("Should expects false if current user is not exists in library")
+    @Test
+    void testShouldReturnFalseIfCurrentUserNotExists() {
+        assertFalse(library.isUserLoggedIn());
     }
 
     @DisplayName("Expects null when no user login")

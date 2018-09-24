@@ -12,7 +12,7 @@ public class Library {
     private final List<User> users;
     private User currentUser;
 
-    Library(final List<LibraryItem> availableItems, LibraryActionListener librarian, List<User> users) {
+    Library(final List<LibraryItem> availableItems, final LibraryActionListener librarian, final List<User> users) {
         this.availableItems = availableItems;
         this.librarian = librarian;
         this.users = users;
@@ -55,7 +55,7 @@ public class Library {
         return false;
     }
 
-    public boolean IsUserLoggedIn() {
+    public boolean isUserLoggedIn() {
         return currentUser != null;
     }
 

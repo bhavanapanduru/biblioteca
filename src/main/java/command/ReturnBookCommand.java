@@ -10,7 +10,7 @@ public class ReturnBookCommand implements Command {
     @Override
     public void act(OutputDriver outputDriver, InputDriver inputDriver, Library library) {
 
-        if (library.IsUserLoggedIn()) {
+        if (library.isUserLoggedIn()) {
 
             outputDriver.print(Message.RETURN_BOOK_HEADER);
             inputDriver.getInputString();   // Takes new Line

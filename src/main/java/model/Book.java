@@ -3,7 +3,7 @@ package model;
 import java.util.Objects;
 
 // Book is a LibraryItem has state like title, author, published year.
-public class Book implements LibraryItem{
+public class Book implements LibraryItem {
     private final String title;
     private final String author;
     private final int publishedYear;
@@ -16,25 +16,25 @@ public class Book implements LibraryItem{
     }
 
     public String getDetails(LibraryItemType libraryItemType) {
-        if(libraryItemType == LibraryItemType.BOOK) {
+        if (libraryItemType == LibraryItemType.BOOK) {
             return title + "," + author + "," + publishedYear;
         }
         return "";
     }
 
     public boolean compareItem(LibraryItem libraryItemToBeCheckout, LibraryItemType libraryItemType) {
-        if(libraryItemType == this.itemType) {
+        if (libraryItemType == this.itemType) {
             return this.equals(libraryItemToBeCheckout);
         }
         return false;
     }
 
     @Override
-    public boolean equals(Object libraryItemToBeCheckout){
-        if (this == libraryItemToBeCheckout){
+    public boolean equals(Object libraryItemToBeCheckout) {
+        if (this == libraryItemToBeCheckout) {
             return true;
         }
-        if (libraryItemToBeCheckout == null || getClass() != libraryItemToBeCheckout.getClass()){
+        if (libraryItemToBeCheckout == null || getClass() != libraryItemToBeCheckout.getClass()) {
             return false;
         }
         Book book = (Book) libraryItemToBeCheckout;

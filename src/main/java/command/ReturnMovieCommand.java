@@ -9,13 +9,13 @@ public class ReturnMovieCommand implements Command {
     @Override
     public void act(OutputDriver outputDriver, InputDriver inputDriver, Library library) {
 
-        if (library.IsUserLoggedIn()) {
+        if (library.isUserLoggedIn()) {
 
             outputDriver.print(Message.RETURN_MOVIE_HEADER);
             inputDriver.getInputString();   // Takes new Line
             String returnBookTitle = inputDriver.getInputString();
 
-            LibraryItem libraryItemToBeReturn = new Movie(returnBookTitle, 0, "","");
+            LibraryItem libraryItemToBeReturn = new Movie(returnBookTitle, 0, "", "");
 
             outputDriver.print(library.returnLibraryItem(libraryItemToBeReturn, LibraryItemType.MOVIE)
                     ? Message.SUCCESSFUL_RETURN_MOVIE_MESSAGE : Message.UNSUCCESSFUL_RETURN_MOVIE_MESSAGE);

@@ -39,9 +39,8 @@ public class LibraryManagementSystem {
         initializeUserChoicesToMenu();
         int userChoice;
 
-        do{
+        do {
             printMenu();
-
             userChoice = inputDriver.getInput();
 
             if (userChoicesToMenu.containsKey(userChoice)) {
@@ -50,7 +49,7 @@ public class LibraryManagementSystem {
                 outputDriver.print(Message.INVALID_CHOICE_MESSAGE);
             }
 
-        }while(userChoice != quitOption);
+        } while (userChoice != quitOption);
 
     }
 
