@@ -37,8 +37,8 @@ class ListBooksCommandTest {
 
         verify(outputDriver).print(Message.LIST_BOOKS_HEAD_LINE);
         verify(outputDriver).printTextWithColumnWise("Title,Author,Published Year");
-        verify(outputDriver).printTextWithColumnWise("Harry Potter,a,1990");
-        verify(outputDriver).printTextWithColumnWise("The Half GirlFriend,b,1991");
+        verify(outputDriver).printTextWithColumnWise("Harry Potter,J.K.Rowling,1997");
+        verify(outputDriver).printTextWithColumnWise("The Half GirlFriend,Chetan Bhagat,2014");
     }
 
 }

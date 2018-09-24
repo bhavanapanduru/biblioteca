@@ -54,8 +54,8 @@ class LibraryTest {
     @Test
     void testShouldReturnAllBookTitles() {
 
-        String expected1 = "Harry Potter,a,1990";
-        String expected2 = "The Half GirlFriend,b,1991";
+        String expected1 = "Harry Potter,J.K.Rowling,1997";
+        String expected2 = "The Half GirlFriend,Chetan Bhagat,2014";
         String notExpected1 = "Harry Potter,a,1";
         String notExpected2 = "Half Girl,a,0";
 
