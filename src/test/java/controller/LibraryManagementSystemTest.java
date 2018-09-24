@@ -35,13 +35,13 @@ class LibraryManagementSystemTest {
     }
 
     private void getDisplayMenuVerifications() {
-        verify(outputDriver, times(2)).print("1) List Books");
-        verify(outputDriver, times(2)).print("2) Checkout Book");
-        verify(outputDriver, times(2)).print("3) Return Book");
-        verify(outputDriver, times(2)).print("4) List Movies");
-        verify(outputDriver, times(2)).print("5) Checkout Movie");
-        verify(outputDriver, times(2)).print("6) Return Movie");
-        verify(outputDriver, times(2)).print("7) Login");
+        verify(outputDriver, times(2)).print("1) Login");
+        verify(outputDriver, times(2)).print("2) List Books");
+        verify(outputDriver, times(2)).print("3) Checkout Book");
+        verify(outputDriver, times(2)).print("4) Return Book");
+        verify(outputDriver, times(2)).print("5) List Movies");
+        verify(outputDriver, times(2)).print("6) Checkout Movie");
+        verify(outputDriver, times(2)).print("7) Return Movie");
         verify(outputDriver, times(2)).print("8) User Information");
         verify(outputDriver, times(2)).print("9) Quit");
     }
@@ -69,7 +69,7 @@ class LibraryManagementSystemTest {
     @DisplayName("Should Display the Menu and Do List_Books operations selected by the user")
     @Test
     void testShouldDisplayTheMenuAndDoListBooksOperation() {
-        when(inputDriver.getInput()).thenReturn(Integer.valueOf("1")).thenReturn(Integer.valueOf("9"));
+        when(inputDriver.getInput()).thenReturn(Integer.valueOf("2")).thenReturn(Integer.valueOf("9"));
         libraryManagementSystem.displayMenu();
 
         verify(outputDriver, times(2)).print(Message.MENU_HEAD_LINE);
@@ -81,7 +81,7 @@ class LibraryManagementSystemTest {
     @DisplayName("Should Display the Menu and Do List_Movies operations selected by the user")
     @Test
     void testShouldDisplayTheMenuAndDoListMoviesOperation() {
-        when(inputDriver.getInput()).thenReturn(Integer.valueOf("4")).thenReturn(Integer.valueOf("9"));
+        when(inputDriver.getInput()).thenReturn(Integer.valueOf("5")).thenReturn(Integer.valueOf("9"));
         libraryManagementSystem.displayMenu();
 
         verify(outputDriver, times(2)).print(Message.MENU_HEAD_LINE);
@@ -108,7 +108,7 @@ class LibraryManagementSystemTest {
 
         testShouldCheckSuccessfulLogin();
 
-        when(inputDriver.getInput()).thenReturn(Integer.valueOf("2")).thenReturn(Integer.valueOf("9"));
+        when(inputDriver.getInput()).thenReturn(Integer.valueOf("3")).thenReturn(Integer.valueOf("9"));
         libraryManagementSystem.displayMenu();
 
         verify(outputDriver, times(2)).print(Message.MENU_HEAD_LINE);
@@ -123,7 +123,7 @@ class LibraryManagementSystemTest {
 
         testShouldCheckSuccessfulLogin();
 
-        when(inputDriver.getInput()).thenReturn(Integer.valueOf("5")).thenReturn(Integer.valueOf("9"));
+        when(inputDriver.getInput()).thenReturn(Integer.valueOf("6")).thenReturn(Integer.valueOf("9"));
         libraryManagementSystem.displayMenu();
 
         verify(outputDriver, times(2)).print(Message.MENU_HEAD_LINE);
@@ -138,7 +138,7 @@ class LibraryManagementSystemTest {
 
         testShouldCheckSuccessfulLogin();
 
-        when(inputDriver.getInput()).thenReturn(Integer.valueOf("3")).thenReturn(Integer.valueOf("9"));
+        when(inputDriver.getInput()).thenReturn(Integer.valueOf("4")).thenReturn(Integer.valueOf("9"));
         libraryManagementSystem.displayMenu();
 
         verify(outputDriver, times(2)).print(Message.MENU_HEAD_LINE);
@@ -153,7 +153,7 @@ class LibraryManagementSystemTest {
 
         testShouldCheckSuccessfulLogin();
 
-        when(inputDriver.getInput()).thenReturn(Integer.valueOf("6")).thenReturn(Integer.valueOf("9"));
+        when(inputDriver.getInput()).thenReturn(Integer.valueOf("7")).thenReturn(Integer.valueOf("9"));
         libraryManagementSystem.displayMenu();
 
         verify(outputDriver, times(2)).print(Message.MENU_HEAD_LINE);
@@ -169,13 +169,13 @@ class LibraryManagementSystemTest {
         libraryManagementSystem.displayMenu();
 
         verify(outputDriver).print(Message.MENU_HEAD_LINE);
-        verify(outputDriver).print("1) List Books");
-        verify(outputDriver).print("2) Checkout Book");
-        verify(outputDriver).print("3) Return Book");
-        verify(outputDriver).print("4) List Movies");
-        verify(outputDriver).print("5) Checkout Movie");
-        verify(outputDriver).print("6) Return Movie");
-        verify(outputDriver).print("7) Login");
+        verify(outputDriver).print("1) Login");
+        verify(outputDriver).print("2) List Books");
+        verify(outputDriver).print("3) Checkout Book");
+        verify(outputDriver).print("4) Return Book");
+        verify(outputDriver).print("5) List Movies");
+        verify(outputDriver).print("6) Checkout Movie");
+        verify(outputDriver).print("7) Return Movie");
         verify(outputDriver).print("8) User Information");
         verify(outputDriver).print("9) Quit");
         verify(outputDriver).print(Message.USER_CHOICE);

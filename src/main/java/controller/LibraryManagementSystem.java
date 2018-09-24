@@ -62,26 +62,27 @@ public class LibraryManagementSystem {
 
     private void initializeUserChoicesToMenu() {
         userChoicesToMenu = new HashMap<>();
-        userChoicesToMenu.put(1, "LIST_BOOKS");
-        userChoicesToMenu.put(2, "CHECKOUT_BOOK");
-        userChoicesToMenu.put(3, "RETURN_BOOK");
-        userChoicesToMenu.put(4, "LIST_MOVIES");
-        userChoicesToMenu.put(5, "CHECKOUT_MOVIE");
-        userChoicesToMenu.put(6, "RETURN_MOVIE");
-        userChoicesToMenu.put(7, "LOGIN");
+        userChoicesToMenu.put(1, "LOGIN");
+        userChoicesToMenu.put(2, "LIST_BOOKS");
+        userChoicesToMenu.put(3, "CHECKOUT_BOOK");
+        userChoicesToMenu.put(4, "RETURN_BOOK");
+        userChoicesToMenu.put(5, "LIST_MOVIES");
+        userChoicesToMenu.put(6, "CHECKOUT_MOVIE");
+        userChoicesToMenu.put(7, "RETURN_MOVIE");
         userChoicesToMenu.put(8, "USER_INFORMATION");
         userChoicesToMenu.put(9, "QUIT");
     }
 
     public LibraryManagementSystem initializeMenu() {
         menuList = new ArrayList<>();
-        menuList.add("1) List Books");
-        menuList.add("2) Checkout Book");
-        menuList.add("3) Return Book");
-        menuList.add("4) List Movies");
-        menuList.add("5) Checkout Movie");
-        menuList.add("6) Return Movie");
-        menuList.add("7) Login");
+
+        menuList.add("1) Login");
+        menuList.add("2) List Books");
+        menuList.add("3) Checkout Book");
+        menuList.add("4) Return Book");
+        menuList.add("5) List Movies");
+        menuList.add("6) Checkout Movie");
+        menuList.add("7) Return Movie");
         menuList.add("8) User Information");
         menuList.add("9) Quit");
 
