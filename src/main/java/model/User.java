@@ -22,6 +22,10 @@ class User {
         return this.libraryNumber.equals(libraryNumber) && this.password.equals(password);
     }
 
+    User logout() {
+        return null;
+    }
+
     @Override
     public String toString() {
         return name + ',' + emailAddress + ',' + PhoneNumber;

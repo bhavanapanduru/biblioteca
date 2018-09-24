@@ -45,4 +45,9 @@ public class Message {
 
     public static final String QUIT_MESSAGE = "\nQuit! Have a Nice day!";
 
+    public static final String SUCCESSFUL_LOGOUT_MESSAGE = "\nSuccessfully Logged Out";
+    public static final String UNSUCCESSFUL_LOGOUT_MESSAGE = "\nLogged Out Failed! Please Try To Login!";
+
+
+
 }

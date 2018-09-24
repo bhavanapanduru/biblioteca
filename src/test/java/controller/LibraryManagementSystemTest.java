@@ -43,7 +43,8 @@ class LibraryManagementSystemTest {
         verify(outputDriver, times(2)).print("6) Checkout Movie");
         verify(outputDriver, times(2)).print("7) Return Movie");
         verify(outputDriver, times(2)).print("8) User Information");
-        verify(outputDriver, times(2)).print("9) Quit");
+        verify(outputDriver, times(2)).print("9) Logout");
+        verify(outputDriver, times(2)).print("10) Quit");
     }
 
     @DisplayName("Should print the welcome message")
@@ -69,7 +70,7 @@ class LibraryManagementSystemTest {
     @DisplayName("Should Display the Menu and Do List_Books operations selected by the user")
     @Test
     void testShouldDisplayTheMenuAndDoListBooksOperation() {
-        when(inputDriver.getInput()).thenReturn(Integer.valueOf("2")).thenReturn(Integer.valueOf("9"));
+        when(inputDriver.getInput()).thenReturn(Integer.valueOf("2")).thenReturn(Integer.valueOf("10"));
         libraryManagementSystem.displayMenu();
 
         verify(outputDriver, times(2)).print(Message.MENU_HEAD_LINE);
@@ -81,7 +82,7 @@ class LibraryManagementSystemTest {
     @DisplayName("Should Display the Menu and Do List_Movies operations selected by the user")
     @Test
     void testShouldDisplayTheMenuAndDoListMoviesOperation() {
-        when(inputDriver.getInput()).thenReturn(Integer.valueOf("5")).thenReturn(Integer.valueOf("9"));
+        when(inputDriver.getInput()).thenReturn(Integer.valueOf("5")).thenReturn(Integer.valueOf("10"));
         libraryManagementSystem.displayMenu();
 
         verify(outputDriver, times(2)).print(Message.MENU_HEAD_LINE);
@@ -93,7 +94,7 @@ class LibraryManagementSystemTest {
     @DisplayName("Should Display the Menu and show Invalid_Choice when user selected wrong option")
     @Test
     void testShouldDisplayTheMenuAndDoInvalidOptionOperation() {
-        when(inputDriver.getInput()).thenReturn(Integer.valueOf("0")).thenReturn(Integer.valueOf("9"));
+        when(inputDriver.getInput()).thenReturn(Integer.valueOf("0")).thenReturn(Integer.valueOf("10"));
         libraryManagementSystem.displayMenu();
 
         verify(outputDriver, times(2)).print(Message.MENU_HEAD_LINE);
@@ -108,7 +109,7 @@ class LibraryManagementSystemTest {
 
         testShouldCheckSuccessfulLogin();
 
-        when(inputDriver.getInput()).thenReturn(Integer.valueOf("3")).thenReturn(Integer.valueOf("9"));
+        when(inputDriver.getInput()).thenReturn(Integer.valueOf("3")).thenReturn(Integer.valueOf("10"));
         libraryManagementSystem.displayMenu();
 
         verify(outputDriver, times(2)).print(Message.MENU_HEAD_LINE);
@@ -123,7 +124,7 @@ class LibraryManagementSystemTest {
 
         testShouldCheckSuccessfulLogin();
 
-        when(inputDriver.getInput()).thenReturn(Integer.valueOf("6")).thenReturn(Integer.valueOf("9"));
+        when(inputDriver.getInput()).thenReturn(Integer.valueOf("6")).thenReturn(Integer.valueOf("10"));
         libraryManagementSystem.displayMenu();
 
         verify(outputDriver, times(2)).print(Message.MENU_HEAD_LINE);
@@ -138,7 +139,7 @@ class LibraryManagementSystemTest {
 
         testShouldCheckSuccessfulLogin();
 
-        when(inputDriver.getInput()).thenReturn(Integer.valueOf("4")).thenReturn(Integer.valueOf("9"));
+        when(inputDriver.getInput()).thenReturn(Integer.valueOf("4")).thenReturn(Integer.valueOf("10"));
         libraryManagementSystem.displayMenu();
 
         verify(outputDriver, times(2)).print(Message.MENU_HEAD_LINE);
@@ -153,7 +154,7 @@ class LibraryManagementSystemTest {
 
         testShouldCheckSuccessfulLogin();
 
-        when(inputDriver.getInput()).thenReturn(Integer.valueOf("7")).thenReturn(Integer.valueOf("9"));
+        when(inputDriver.getInput()).thenReturn(Integer.valueOf("7")).thenReturn(Integer.valueOf("10"));
         libraryManagementSystem.displayMenu();
 
         verify(outputDriver, times(2)).print(Message.MENU_HEAD_LINE);
@@ -162,10 +163,24 @@ class LibraryManagementSystemTest {
         verify(outputDriver).print(Message.RETURN_MOVIE_HEADER);
     }
 
+    @DisplayName("Should Display the Menu, show messages when user selects 'User Information' option")
+    @Test
+    void testShouldDisplayTheMenuAndDoUserInformationOptionOperation() {
+
+        testShouldCheckSuccessfulLogin();
+
+        when(inputDriver.getInput()).thenReturn(Integer.valueOf("8")).thenReturn(Integer.valueOf("10"));
+        libraryManagementSystem.displayMenu();
+
+        verify(outputDriver, times(2)).print(Message.MENU_HEAD_LINE);
+        getDisplayMenuVerifications();
+        verify(outputDriver, times(2)).print(Message.USER_CHOICE);
+    }
+
     @DisplayName("Should Display the Menu,  if user selects an 'Quit' option then stop the system")
     @Test
     void testShouldDisplayTheMenuAndDoQuitOptionOperation() {
-        when(inputDriver.getInput()).thenReturn(Integer.valueOf("9"));
+        when(inputDriver.getInput()).thenReturn(Integer.valueOf("10"));
         libraryManagementSystem.displayMenu();
 
         verify(outputDriver).print(Message.MENU_HEAD_LINE);
@@ -177,7 +192,8 @@ class LibraryManagementSystemTest {
         verify(outputDriver).print("6) Checkout Movie");
         verify(outputDriver).print("7) Return Movie");
         verify(outputDriver).print("8) User Information");
-        verify(outputDriver).print("9) Quit");
+        verify(outputDriver).print("9) Logout");
+        verify(outputDriver).print("10) Quit");
         verify(outputDriver).print(Message.USER_CHOICE);
     }
 

@@ -14,7 +14,7 @@ public class LibraryManagementSystem {
     private final OutputDriver outputDriver;
     private final InputDriver inputDriver;
     private final Library library;
-    private final int quitOption = 9;
+    private final int quitOption = 10;
 
     private List<String> menuList;
 
@@ -68,7 +68,8 @@ public class LibraryManagementSystem {
         menuList.add("6) Checkout Movie");
         menuList.add("7) Return Movie");
         menuList.add("8) User Information");
-        menuList.add("9) Quit");
+        menuList.add("9) Logout");
+        menuList.add("10) Quit");
 
         return this;
     }

@@ -170,4 +170,11 @@ class LibraryTest {
         assertEquals("", library.getUserInformation());
     }
 
+    @DisplayName("Expects true if user logged out")
+    @Test
+    void testShouldReturnTrueIfUserLoggedOut() {
+        library.authenticate("123-121510", "bhavana");
+        assertTrue(library.unauthenticated());
+    }
+
 }

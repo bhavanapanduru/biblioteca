@@ -36,4 +36,10 @@ class UserTest {
         assertNotEquals("Anju,bhavana.p@thoughtworks.com,8985322285", user1.toString());
     }
 
+    @DisplayName("should return null")
+    @Test
+    void testShouldReturnNull() {
+        assertEquals(null, user1.logout());
+    }
+
 }

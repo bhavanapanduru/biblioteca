@@ -76,4 +76,9 @@ public class Library {
             return currentUser.toString();
         return "";
     }
+
+    public boolean unauthenticated() {
+        currentUser = currentUser.logout();
+        return currentUser == null;
+    }
 }
