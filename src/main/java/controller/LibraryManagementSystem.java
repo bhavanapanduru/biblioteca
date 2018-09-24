@@ -6,7 +6,6 @@ import view.InputDriver;
 import view.OutputDriver;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 // LibraryManagementSystem manages the library
@@ -18,7 +17,6 @@ public class LibraryManagementSystem {
     private final int quitOption = 9;
 
     private List<String> menuList;
-    private HashMap<Integer, String> userChoicesToMenu;
 
     public LibraryManagementSystem(final OutputDriver outputDriver, final InputDriver inputDriver, final Library library) {
         this.outputDriver = outputDriver;
@@ -36,15 +34,15 @@ public class LibraryManagementSystem {
 
     private void doMenuOperation() {
 
-        initializeUserChoicesToMenu();
         int userChoice;
 
         do {
             printMenu();
             userChoice = inputDriver.getInput();
+            int optionToDoAction = userChoice - 1;
 
-            if (userChoicesToMenu.containsKey(userChoice)) {
-                Menu.valueOf(userChoicesToMenu.get(userChoice)).act(outputDriver, inputDriver, library);
+            if (optionToDoAction >= 0 && optionToDoAction <= quitOption) {
+                Menu.values()[optionToDoAction].act(outputDriver, inputDriver, library);
             } else {
                 outputDriver.print(Message.INVALID_CHOICE_MESSAGE);
             }
@@ -57,19 +55,6 @@ public class LibraryManagementSystem {
         outputDriver.print(Message.MENU_HEAD_LINE);
         menuList.forEach(outputDriver::print);
         outputDriver.print(Message.USER_CHOICE);
-    }
-
-    private void initializeUserChoicesToMenu() {
-        userChoicesToMenu = new HashMap<>();
-        userChoicesToMenu.put(1, "LOGIN");
-        userChoicesToMenu.put(2, "LIST_BOOKS");
-        userChoicesToMenu.put(3, "CHECKOUT_BOOK");
-        userChoicesToMenu.put(4, "RETURN_BOOK");
-        userChoicesToMenu.put(5, "LIST_MOVIES");
-        userChoicesToMenu.put(6, "CHECKOUT_MOVIE");
-        userChoicesToMenu.put(7, "RETURN_MOVIE");
-        userChoicesToMenu.put(8, "USER_INFORMATION");
-        userChoicesToMenu.put(9, "QUIT");
     }
 
     public LibraryManagementSystem initializeMenu() {
