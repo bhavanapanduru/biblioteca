@@ -24,6 +24,7 @@ class User {
 
     @Override
     public String toString() {
-        return name + ',' + emailAddress + ',' +PhoneNumber;
+        return name + ',' + emailAddress + ',' + PhoneNumber;
     }
+
 }

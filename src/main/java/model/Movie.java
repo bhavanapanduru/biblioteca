@@ -3,7 +3,7 @@ package model;
 import java.util.Objects;
 
 // Movie is a LibraryItem has state like name, year, director and rating
-public class Movie implements LibraryItem{
+public class Movie implements LibraryItem {
 
     private final String name;
     private final int year;
@@ -19,14 +19,14 @@ public class Movie implements LibraryItem{
     }
 
     public String getDetails(final LibraryItemType libraryItemType) {
-        if(libraryItemType == this.itemType) {
+        if (libraryItemType == this.itemType) {
             return name + "," + year + "," + director + "," + rating;
         }
         return "";
     }
 
     public boolean compareItem(final LibraryItem libraryItemObject, final LibraryItemType libraryItemType) {
-        if(libraryItemType == LibraryItemType.MOVIE) {
+        if (libraryItemType == LibraryItemType.MOVIE) {
             return this.equals(libraryItemObject);
         }
         return false;
@@ -34,10 +34,10 @@ public class Movie implements LibraryItem{
 
     @Override
     public boolean equals(Object libraryItemObject) {
-        if (this == libraryItemObject){
+        if (this == libraryItemObject) {
             return true;
         }
-        if (libraryItemObject == null || getClass() != libraryItemObject.getClass()){
+        if (libraryItemObject == null || getClass() != libraryItemObject.getClass()) {
             return false;
         }
         Movie movie = (Movie) libraryItemObject;

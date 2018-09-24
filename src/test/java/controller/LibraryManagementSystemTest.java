@@ -183,8 +183,8 @@ class LibraryManagementSystemTest {
 
     @DisplayName(" should initialize the menu list")
     @Test
-    void testShouldInitializeTheMenuList(){
-        assertEquals(LibraryManagementSystem.class, libraryManagementSystem.initializeMenu().getClass() );
+    void testShouldInitializeTheMenuList() {
+        assertEquals(LibraryManagementSystem.class, libraryManagementSystem.initializeMenu().getClass());
     }
 
 }

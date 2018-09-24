@@ -17,7 +17,7 @@ class ListMoviesCommandTest {
 
     private OutputDriver outputDriver;
     private InputDriver inputDriver;
-    private Library library ;
+    private Library library;
     private ListMoviesCommand listMoviesCommand;
 
     @BeforeEach

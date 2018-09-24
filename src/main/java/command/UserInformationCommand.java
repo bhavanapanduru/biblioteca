@@ -21,6 +21,6 @@ public class UserInformationCommand implements Command {
         } else {
             outputDriver.print(Message.PLEASE_LOGIN);
         }
-    }
 
+    }
 }

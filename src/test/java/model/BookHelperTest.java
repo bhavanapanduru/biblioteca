@@ -31,11 +31,11 @@ class BookHelperTest {
     @Test
     void testShouldReturnCorrectBooks() {
 
-        assertEquals(books.get(0).getDetails(LibraryItemType.BOOK) , bookHelper.getBooks().get(0).getDetails(LibraryItemType.BOOK));
-        assertEquals(books.get(1).getDetails(LibraryItemType.BOOK) , bookHelper.getBooks().get(1).getDetails(LibraryItemType.BOOK));
+        assertEquals(books.get(0).getDetails(LibraryItemType.BOOK), bookHelper.getBooks().get(0).getDetails(LibraryItemType.BOOK));
+        assertEquals(books.get(1).getDetails(LibraryItemType.BOOK), bookHelper.getBooks().get(1).getDetails(LibraryItemType.BOOK));
 
-        assertNotEquals(books.get(2).getDetails(LibraryItemType.BOOK) , bookHelper.getBooks().get(0).getDetails(LibraryItemType.BOOK));
-        assertNotEquals(books.get(3).getDetails(LibraryItemType.BOOK) , bookHelper.getBooks().get(1).getDetails(LibraryItemType.BOOK));
+        assertNotEquals(books.get(2).getDetails(LibraryItemType.BOOK), bookHelper.getBooks().get(0).getDetails(LibraryItemType.BOOK));
+        assertNotEquals(books.get(3).getDetails(LibraryItemType.BOOK), bookHelper.getBooks().get(1).getDetails(LibraryItemType.BOOK));
 
     }
 

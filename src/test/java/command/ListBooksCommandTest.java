@@ -17,7 +17,7 @@ class ListBooksCommandTest {
 
     private OutputDriver outputDriver;
     private InputDriver inputDriver;
-    private Library library ;
+    private Library library;
     private ListBooksCommand listBooksCommand;
     private LibraryActionListener librarian;
 
@@ -40,4 +40,5 @@ class ListBooksCommandTest {
         verify(outputDriver).printTextWithColumnWise("Harry Potter,a,1990");
         verify(outputDriver).printTextWithColumnWise("The Half GirlFriend,b,1991");
     }
+
 }

@@ -61,7 +61,7 @@ public class Library {
 
     public boolean authenticate(final String libraryNumber, final String password) {
 
-        for(User user : users) {
+        for (User user : users) {
             currentUser = user.login(libraryNumber, password) ? user : null;
             if (currentUser != null) {
                 return true;
@@ -72,7 +72,7 @@ public class Library {
     }
 
     public String getUserInformation() {
-        if(currentUser != null)
+        if (currentUser != null)
             return currentUser.toString();
         return "";
     }

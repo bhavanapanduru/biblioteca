@@ -41,5 +41,4 @@ public class Book implements LibraryItem {
         return Objects.equals(title, book.title);
     }
 
-
 }

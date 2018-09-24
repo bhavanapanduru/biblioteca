@@ -4,6 +4,7 @@ package model;
 public interface LibraryItem {
 
     String getDetails(LibraryItemType libraryItemType);
+
     boolean compareItem(LibraryItem libraryItemObject, LibraryItemType libraryItemType);
 
 }

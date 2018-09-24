@@ -14,9 +14,9 @@ public class MovieTest {
 
     @BeforeEach
     void init() {
-        movie = new Movie("Avatar", 2009,  "James Cameron", "10");
-        libraryItemObject1 = new Movie("Avatar", 2009,  "James Cameron", "10");
-        libraryItemObject2 = new Movie("Pulp Fiction", 1994,"Quentin Tarantino", "10");
+        movie = new Movie("Avatar", 2009, "James Cameron", "10");
+        libraryItemObject1 = new Movie("Avatar", 2009, "James Cameron", "10");
+        libraryItemObject2 = new Movie("Pulp Fiction", 1994, "Quentin Tarantino", "10");
     }
 
     @DisplayName("Should expects name of the movie when the LibraryItemType is MOVIE")
@@ -61,6 +61,5 @@ public class MovieTest {
     void testShouldReturnTrueIfTwoTitlesAreNotEqual() {
         assertFalse(movie.equals(libraryItemObject2));
     }
-
 
 }

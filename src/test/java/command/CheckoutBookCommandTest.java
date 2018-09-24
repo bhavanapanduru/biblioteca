@@ -90,4 +90,5 @@ class CheckoutBookCommandTest {
         verify(outputDriver).print(Message.PLEASE_LOGIN);
 
     }
+
 }

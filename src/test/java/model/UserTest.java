@@ -13,10 +13,8 @@ class UserTest {
 
     @BeforeEach
     void init() {
-
         user1 = new User("Bhavana", "bhavana.p@thoughtworks.com", "8985322285", "123-121510", "bhavana");
         user2 = new User("Anju", "anju.g@oracle.com", "8333960577", "123-121451", "anju");
-
     }
 
     @DisplayName("should expects true if a object credentials are equal with user given credentials")
