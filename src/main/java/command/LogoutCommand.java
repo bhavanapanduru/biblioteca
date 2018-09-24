@@ -5,6 +5,7 @@ import model.Message;
 import view.InputDriver;
 import view.OutputDriver;
 
+// LogoutCommand is used to logout the user 
 public class LogoutCommand implements Command {
 
     @Override
